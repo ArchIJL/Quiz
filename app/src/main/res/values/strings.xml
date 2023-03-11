@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Quiz</string>
     <string name="options">Options</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="time">На время</string>
+    <string name="options_text">Настройки</string>
+    <string name="campaign_text">Кампания</string>
+    <string name="survival_text">Выживание</string>
+    <string name="back_campaign">Назад</string>
 </resources>

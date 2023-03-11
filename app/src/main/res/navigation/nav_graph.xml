@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/test"
+    app:startDestination="@id/main_fragment">
+    <fragment
+        android:id="@+id/main_fragment"
+        android:name="com.example.quiz.main_fragment"
+        android:label="fragment_main_fragment"
+        tools:layout="@layout/fragment_main_fragment" >
+        <action
+            android:id="@+id/action_main_fragment_to_campaign"
+            app:destination="@id/campaign" />
+        <action
+            android:id="@+id/action_main_fragment_to_survival"
+            app:destination="@id/survival" />
+        <action
+            android:id="@+id/action_main_fragment_to_time"
+            app:destination="@id/time" />
+        <action
+            android:id="@+id/action_main_fragment_to_options"
+            app:destination="@id/options" />
+    </fragment>
+    <fragment
+        android:id="@+id/campaign"
+        android:name="com.example.quiz.Campaign"
+        android:label="fragment_ques"
+        tools:layout="@layout/fragment_campaign" />
+    <fragment
+        android:id="@+id/survival"
+        android:name="com.example.quiz.Survival"
+        android:label="fragment_pictures"
+        tools:layout="@layout/fragment_survival" />
+    <fragment
+        android:id="@+id/time"
+        android:name="com.example.quiz.Time"
+        android:label="fragment_popularity"
+        tools:layout="@layout/fragment_time" />
+    <fragment
+        android:id="@+id/options"
+        android:name="com.example.quiz.options"
+        android:label="fragment_options"
+        tools:layout="@layout/fragment_options" />
+</navigation>
