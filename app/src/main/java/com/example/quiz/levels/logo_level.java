@@ -1,26 +1,26 @@
-package com.example.quiz;
+package com.example.quiz.levels;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.quiz.databinding.FragmentTimeBinding;
+
+import androidx.fragment.app.Fragment;
+
+import com.example.quiz.R;
 
 
-public class Time extends Fragment {
+public class logo_level extends Fragment {
 
-    private FragmentTimeBinding binding = null;
 
-    public Time() {
 
+    public logo_level() {
+        // Required empty public constructor
     }
 
 
-    public static Time newInstance() {
-        Time fragment = new Time();
+    public static logo_level newInstance(String param1, String param2) {
+        logo_level fragment = new logo_level();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -34,7 +34,7 @@ public class Time extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentTimeBinding.inflate(inflater, container, false);
-        return binding.getRoot();
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_logo_level, container, false);
     }
 }

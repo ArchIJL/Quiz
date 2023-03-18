@@ -9,17 +9,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.quiz.databinding.FragmentSurvivalBinding;
 
-public class Survival extends Fragment {
+public class survival extends Fragment {
 
     private FragmentSurvivalBinding binding = null;
 
-    public Survival() {
+    public survival() {
 
     }
 
 
-    public static Survival newInstance() {
-        Survival fragment = new Survival();
+    public static survival newInstance() {
+        survival fragment = new survival();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;

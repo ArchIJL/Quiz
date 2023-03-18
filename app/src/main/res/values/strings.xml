@@ -7,4 +7,25 @@
     <string name="campaign_text">Кампания</string>
     <string name="survival_text">Выживание</string>
     <string name="back_campaign">Назад</string>
+    <string name="_food_1">1</string>
+    <string name="_food_2">2</string>
+    <string name="_food_3">3</string>
+    <string name="_food_4">4</string>
+    <string name="_food_5">5</string>
+    <string name="_food_6">6</string>
+    <string name="_food_7">7</string>
+    <string name="_food_8">8</string>
+    <string name="_food_9">9</string>
+    <string name="_food_10">10</string>
+    <string name="_food_11">11</string>
+    <string name="_food_12">12</string>
+    <string name="_food_13">13</string>
+    <string name="_food_14">14</string>
+    <string name="_food_15">15</string>
+    <string name="_food_16">16</string>
+    <string name="_food_17">17</string>
+    <string name="_food_18">18</string>
+    <string name="_food_19">19</string>
+    <string name="_food_20">20</string>
+    <string name="quiz_game">Quiz Game</string>
 </resources>

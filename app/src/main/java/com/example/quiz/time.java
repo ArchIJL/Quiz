@@ -1,26 +1,26 @@
 package com.example.quiz;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.quiz.databinding.FragmentOptionsBinding;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.example.quiz.databinding.FragmentTimeBinding;
 
 
-public class options extends Fragment {
+public class time extends Fragment {
 
-    private FragmentOptionsBinding binding = null;
+    private FragmentTimeBinding binding = null;
 
-    public options() {
+    public time() {
 
     }
 
 
-    public static options newInstance() {
-        options fragment = new options();
+    public static time newInstance() {
+        time fragment = new time();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -34,7 +34,7 @@ public class options extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentOptionsBinding.inflate(inflater, container, false);
+        binding = FragmentTimeBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 }

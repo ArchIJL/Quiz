@@ -1,25 +1,24 @@
-package com.example.quiz;
+package com.example.quiz.levels;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.quiz.databinding.FragmentCampaignBinding;
 
-public class Campaign extends Fragment {
+import androidx.fragment.app.Fragment;
 
-    private FragmentCampaignBinding binding = null;
+import com.example.quiz.R;
 
-    public Campaign() {
+
+public class geography_level extends Fragment {
+
+
+    public geography_level() {
         // Required empty public constructor
     }
 
-
-    public static Campaign newInstance() {
-        Campaign fragment = new Campaign();
+    public static geography_level newInstance(String param1, String param2) {
+        geography_level fragment = new geography_level();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -28,13 +27,12 @@ public class Campaign extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentCampaignBinding.inflate(inflater, container, false);
-        return binding.getRoot();
+
+        return inflater.inflate(R.layout.fragment_geography_level, container, false);
     }
 }

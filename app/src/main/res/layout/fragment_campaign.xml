@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Campaign">
+    tools:context=".campaign">
 
 
     <LinearLayout
@@ -16,33 +16,32 @@
 
         <LinearLayout
             android:id="@+id/container_campaign_2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp">
 
             <LinearLayout
-                android:id="@+id/container_campaign_3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/button_campaign_back"
+                    android:id="@+id/back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/custom_button1"
-                    android:text="@string/back_campaign"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
-                    android:textAllCaps="false"/>
+                    android:text="Назад"
+                    android:fontFamily="@font/superwebcomicbros"
+                    android:textSize="25sp"
+                    android:textColor="@color/black"/>
+
             </LinearLayout>
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp">
 
                 <LinearLayout
                     android:id="@+id/container_campaign_4"
@@ -51,20 +50,82 @@
                     android:orientation="vertical" >
 
                     <Button
-                        android:id="@+id/button3"
+                        android:id="@+id/button_level_geography"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="60dp"
                         android:background="@drawable/custom_button1"
-                        android:text="Button"
-                        android:textColor="@color/white"/>
+                        android:text="География"
+                        android:fontFamily="@font/superwebcomicbros"
+                        android:textSize="30sp"
+                        android:textColor="@color/black"/>
 
                     <Button
-                        android:id="@+id/button4"
+                        android:id="@+id/button_level_logo"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp"
                         android:background="@drawable/custom_button1"
-                        android:text="Button"
-                        android:textColor="@color/white"/>
+                        android:text="Логотипы"
+                        android:fontFamily="@font/superwebcomicbros"
+                        android:textSize="30sp"
+                        android:textColor="@color/black"/>
+
+                    <Button
+                        android:id="@+id/button_level_history"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/custom_button1"
+                        android:text="История"
+                        android:fontFamily="@font/superwebcomicbros"
+                        android:textSize="30sp"
+                        android:textColor="@color/black"/>
+
+                    <Button
+                        android:id="@+id/button_level_sports"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/custom_button1"
+                        android:text="Спорт"
+                        android:fontFamily="@font/superwebcomicbros"
+                        android:textSize="30sp"
+                        android:textColor="@color/black"/>
+
+                    <Button
+                        android:id="@+id/button_level_movies"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/custom_button1"
+                        android:text="Кино"
+                        android:fontFamily="@font/superwebcomicbros"
+                        android:textSize="30sp"
+                        android:textColor="@color/black"/>
+
+                    <Button
+                        android:id="@+id/button_level_games"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/custom_button1"
+                        android:text="Игры"
+                        android:fontFamily="@font/superwebcomicbros"
+                        android:textSize="30sp"
+                        android:textColor="@color/black"/>
+
+                    <Button
+                        android:id="@+id/button_level_food"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/custom_button1"
+                        android:text="Кулинария"
+                        android:fontFamily="@font/superwebcomicbros"
+                        android:textColor="@color/black"
+                        android:textSize="30sp" />
+
+
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>
