@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".campaign">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        android:elevation="10dp"/>
+
 
     <LinearLayout
         android:id="@+id/container_campaign_1"
@@ -14,6 +23,7 @@
         android:gravity="center"
         android:orientation="vertical">
 
+
         <LinearLayout
             android:id="@+id/container_campaign_2"
             android:layout_width="match_parent"
@@ -21,22 +31,6 @@
             android:orientation="vertical"
             android:padding="10dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/custom_button1"
-                    android:text="Назад"
-                    android:fontFamily="@font/superwebcomicbros"
-                    android:textSize="25sp"
-                    android:textColor="@color/black"/>
-
-            </LinearLayout>
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -55,7 +49,7 @@
                         android:layout_height="60dp"
                         android:background="@drawable/custom_button1"
                         android:text="География"
-                        android:fontFamily="@font/superwebcomicbros"
+                        android:textAllCaps="false"
                         android:textSize="30sp"
                         android:textColor="@color/black"/>
 
@@ -66,7 +60,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/custom_button1"
                         android:text="Логотипы"
-                        android:fontFamily="@font/superwebcomicbros"
+                        android:textAllCaps="false"
                         android:textSize="30sp"
                         android:textColor="@color/black"/>
 
@@ -77,7 +71,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/custom_button1"
                         android:text="История"
-                        android:fontFamily="@font/superwebcomicbros"
+                        android:textAllCaps="false"
                         android:textSize="30sp"
                         android:textColor="@color/black"/>
 
@@ -88,7 +82,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/custom_button1"
                         android:text="Спорт"
-                        android:fontFamily="@font/superwebcomicbros"
+                        android:textAllCaps="false"
                         android:textSize="30sp"
                         android:textColor="@color/black"/>
 
@@ -99,7 +93,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/custom_button1"
                         android:text="Кино"
-                        android:fontFamily="@font/superwebcomicbros"
+                        android:textAllCaps="false"
                         android:textSize="30sp"
                         android:textColor="@color/black"/>
 
@@ -110,7 +104,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/custom_button1"
                         android:text="Игры"
-                        android:fontFamily="@font/superwebcomicbros"
+                        android:textAllCaps="false"
                         android:textSize="30sp"
                         android:textColor="@color/black"/>
 
@@ -121,7 +115,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/custom_button1"
                         android:text="Кулинария"
-                        android:fontFamily="@font/superwebcomicbros"
+                        android:textAllCaps="false"
                         android:textColor="@color/black"
                         android:textSize="30sp" />
 

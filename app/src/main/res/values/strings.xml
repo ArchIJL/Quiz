@@ -28,4 +28,7 @@
     <string name="_food_19">19</string>
     <string name="_food_20">20</string>
     <string name="quiz_game">Quiz Game</string>
+    <string name="num_correct_answers">Количество правильных ответов: %d</string>
+    <color name="correct">#4CAF50</color>
+    <color name="incorrect">#F44336</color>
 </resources>

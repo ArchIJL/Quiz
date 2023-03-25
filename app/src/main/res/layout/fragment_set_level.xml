@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".levels.food_level">
+    tools:context=".set_level">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -49,7 +49,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/food_level1"
+                            android:id="@+id/set_level1"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_weight="1"
@@ -57,7 +57,7 @@
                             android:gravity="center" />
 
                         <Button
-                            android:id="@+id/food_level2"
+                            android:id="@+id/set_level2"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_weight="1"
@@ -65,7 +65,7 @@
                             android:gravity="center" />
 
                         <Button
-                            android:id="@+id/food_level3"
+                            android:id="@+id/set_level3"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_weight="1"
@@ -73,7 +73,7 @@
                             android:gravity="center" />
 
                         <Button
-                            android:id="@+id/food_level4"
+                            android:id="@+id/set_level4"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_weight="1"
@@ -81,7 +81,7 @@
                             android:gravity="center" />
 
                         <Button
-                            android:id="@+id/food_level5"
+                            android:id="@+id/set_level5"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_weight="1"
@@ -97,7 +97,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/food_level6"
+                            android:id="@+id/set_level6"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_weight="1"
@@ -105,7 +105,7 @@
                             android:text="@string/_food_6" />
 
                         <Button
-                            android:id="@+id/food_level7"
+                            android:id="@+id/set_level7"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_weight="1"
@@ -113,7 +113,7 @@
                             android:text="@string/_food_7" />
 
                         <Button
-                            android:id="@+id/food_level8"
+                            android:id="@+id/set_level8"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_weight="1"
@@ -121,7 +121,7 @@
                             android:text="@string/_food_8" />
 
                         <Button
-                            android:id="@+id/food_level9"
+                            android:id="@+id/set_level9"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_weight="1"
@@ -129,7 +129,7 @@
                             android:text="@string/_food_9" />
 
                         <Button
-                            android:id="@+id/food_level10"
+                            android:id="@+id/set_level10"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_weight="1"
@@ -145,7 +145,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/food_level11"
+                            android:id="@+id/set_level11"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_weight="1"
@@ -153,7 +153,7 @@
                             android:text="@string/_food_11" />
 
                         <Button
-                            android:id="@+id/food_level12"
+                            android:id="@+id/set_level12"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_weight="1"
@@ -161,7 +161,7 @@
                             android:text="@string/_food_12" />
 
                         <Button
-                            android:id="@+id/food_level13"
+                            android:id="@+id/set_level13"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_weight="1"
@@ -169,7 +169,7 @@
                             android:text="@string/_food_13" />
 
                         <Button
-                            android:id="@+id/food_level14"
+                            android:id="@+id/set_level14"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_weight="1"
@@ -177,7 +177,7 @@
                             android:text="@string/_food_14" />
 
                         <Button
-                            android:id="@+id/food_level15"
+                            android:id="@+id/set_level15"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_weight="1"
@@ -193,7 +193,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/food_level16"
+                            android:id="@+id/set_level16"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_weight="1"
@@ -201,7 +201,7 @@
                             android:text="@string/_food_16" />
 
                         <Button
-                            android:id="@+id/food_level17"
+                            android:id="@+id/set_level17"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_weight="1"
@@ -209,7 +209,7 @@
                             android:text="@string/_food_17" />
 
                         <Button
-                            android:id="@+id/food_level18"
+                            android:id="@+id/set_level18"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_weight="1"
@@ -217,7 +217,7 @@
                             android:text="@string/_food_18" />
 
                         <Button
-                            android:id="@+id/food_level19"
+                            android:id="@+id/set_level19"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_weight="1"
@@ -225,7 +225,7 @@
                             android:text="@string/_food_19" />
 
                         <Button
-                            android:id="@+id/food_level20"
+                            android:id="@+id/set_level20"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_weight="1"

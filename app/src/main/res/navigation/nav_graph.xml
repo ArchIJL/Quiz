@@ -28,26 +28,8 @@
         android:label="fragment_campaign"
         tools:layout="@layout/fragment_campaign" >
         <action
-            android:id="@+id/action_campaign_to_geography_level"
-            app:destination="@id/geography_level" />
-        <action
-            android:id="@+id/action_campaign_to_logo_level"
-            app:destination="@id/logo_level" />
-        <action
-            android:id="@+id/action_campaign_to_history_level"
-            app:destination="@id/history_level" />
-        <action
-            android:id="@+id/action_campaign_to_sports_level"
-            app:destination="@id/sports_level" />
-        <action
-            android:id="@+id/action_campaign_to_movies_level"
-            app:destination="@id/movies_level" />
-        <action
-            android:id="@+id/action_campaign_to_games_level"
-            app:destination="@id/games_level" />
-        <action
-            android:id="@+id/action_campaign_to_food_level"
-            app:destination="@id/food_level" />
+            android:id="@+id/action_campaign_to_set_level"
+            app:destination="@id/set_level" />
         <action
             android:id="@+id/action_campaign_to_main_fragment"
             app:destination="@id/main_fragment" />
@@ -68,71 +50,24 @@
         android:label="fragment_options"
         tools:layout="@layout/fragment_options" />
     <fragment
-        android:id="@+id/geography_level"
-        android:name="com.example.quiz.levels.geography_level"
-        android:label="fragment_geography_level"
-        tools:layout="@layout/fragment_geography_level" >
+        android:id="@+id/set_level"
+        android:name="com.example.quiz.set_level"
+        android:label="fragment_set_level"
+        tools:layout="@layout/fragment_set_level">
         <action
-            android:id="@+id/action_geography_level_to_level"
+            android:id="@+id/action_set_level_to_level"
             app:destination="@id/level" />
-    </fragment>
-    <fragment
-        android:id="@+id/logo_level"
-        android:name="com.example.quiz.levels.logo_level"
-        android:label="fragment_logo_level"
-        tools:layout="@layout/fragment_logo_level" >
         <action
-            android:id="@+id/action_logo_level_to_level"
-            app:destination="@id/level" />
-    </fragment>
-    <fragment
-        android:id="@+id/history_level"
-        android:name="com.example.quiz.levels.history_level"
-        android:label="fragment_history_level"
-        tools:layout="@layout/fragment_history_level" >
-        <action
-            android:id="@+id/action_history_level_to_level"
-            app:destination="@id/level" />
-    </fragment>
-    <fragment
-        android:id="@+id/sports_level"
-        android:name="com.example.quiz.levels.sports_level"
-        android:label="fragment_sports_level"
-        tools:layout="@layout/fragment_sports_level" >
-        <action
-            android:id="@+id/action_sports_level_to_level"
-            app:destination="@id/level" />
-    </fragment>
-    <fragment
-        android:id="@+id/movies_level"
-        android:name="com.example.quiz.levels.movies_level"
-        android:label="fragment_movies_level"
-        tools:layout="@layout/fragment_movies_level" >
-        <action
-            android:id="@+id/action_movies_level_to_level"
-            app:destination="@id/level" />
-    </fragment>
-    <fragment
-        android:id="@+id/games_level"
-        android:name="com.example.quiz.levels.games_level"
-        android:label="fragment_games_level"
-        tools:layout="@layout/fragment_games_level" >
-        <action
-            android:id="@+id/action_games_level_to_level"
-            app:destination="@id/level" />
-    </fragment>
-    <fragment
-        android:id="@+id/food_level"
-        android:name="com.example.quiz.levels.food_level"
-        android:label="fragment_food_level"
-        tools:layout="@layout/fragment_food_level" >
-        <action
-            android:id="@+id/action_food_level_to_level"
-            app:destination="@id/level" />
+            android:id="@+id/action_set_level_to_campaign"
+            app:destination="@id/campaign" />
     </fragment>
     <fragment
         android:id="@+id/level"
         android:name="com.example.quiz.level"
         android:label="fragment_levels"
-        tools:layout="@layout/fragment_levels" />
+        tools:layout="@layout/fragment_levels" >
+        <action
+            android:id="@+id/action_level_to_set_level"
+            app:destination="@id/set_level" />
+    </fragment>
 </navigation>

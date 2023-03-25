@@ -1,22 +1,23 @@
 package com.example.quiz;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.Navigation;
 
 import com.example.quiz.databinding.FragmentMainFragmentBinding;
 
 public class main_fragment extends Fragment {
 
+    public final String TAG = "main";
+
     private FragmentMainFragmentBinding binding = null;
 
-    public main_fragment() {
-        // Required empty public constructor
-    }
 
     public static main_fragment newInstance() {
         main_fragment fragment = new main_fragment();
@@ -35,6 +36,11 @@ public class main_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentMainFragmentBinding.inflate(inflater, container, false);
+
+        FragmentManager fragmentManager = getParentFragmentManager();
+        int backStackEntryCount = fragmentManager.getBackStackEntryCount();
+        Log.d(TAG, "Number of fragments on back stack: " + backStackEntryCount);
+
         return binding.getRoot();
     }
 
