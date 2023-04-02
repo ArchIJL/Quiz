@@ -1,6 +1,9 @@
 package com.example.quiz;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
@@ -23,6 +26,7 @@ import androidx.navigation.Navigation;
 
 import com.example.quiz.databinding.FragmentLevelsBinding;
 import com.example.quiz.model.MyViewModel;
+import com.example.quiz.model.SettingsViewModel;
 
 import java.util.ArrayList;
 
@@ -32,6 +36,7 @@ public class level extends Fragment implements View.OnClickListener {
     public final String TAG = "level";
 
     private MyViewModel viewModel;
+    private SettingsViewModel settingsViewModel;
 
     private TextView questionTextView;
     private EditText answerEditText;
@@ -47,6 +52,7 @@ public class level extends Fragment implements View.OnClickListener {
         super.onCreate(savedInstanceState);
 
         viewModel = new ViewModelProvider(requireActivity()).get(MyViewModel.class);
+        settingsViewModel = new ViewModelProvider(requireActivity()).get(SettingsViewModel.class);
     }
 
 
@@ -2677,7 +2683,7 @@ public class level extends Fragment implements View.OnClickListener {
                 onMoveNextQuestion();
             }
         });
-        //
+
         ArrayList<Pair<String, Boolean>> buttonData = viewModel.getButtonData(categoryId, levelId);
         if (buttonData != null) {
             // restore button text and isEnabled state
@@ -2688,13 +2694,12 @@ public class level extends Fragment implements View.OnClickListener {
                 button.setEnabled(pair.second);
             }
         } else {
-            //
             originalButtonText = new ArrayList<>();
             for (int i = 0; i < 12; i++) {
                 originalButtonText.add(answerButtons.get(i).getText().toString());
-                answerButtons.get(i).setEnabled(true);//
+                answerButtons.get(i).setEnabled(true);
             }
-        }//
+        }
 
         for (Button button : answerButtons) {
             button.setOnClickListener(this);
@@ -2733,14 +2738,25 @@ public class level extends Fragment implements View.OnClickListener {
                             button.setEnabled(false);
                         }
                         resetButton.setEnabled(false);
-                        //
+
                         ArrayList<Pair<String, Boolean>> buttonData = new ArrayList<>();
                         for (Button button : answerButtons) {
                             buttonData.add(new Pair<>(button.getText().toString(), button.isEnabled()));
                         }
                         viewModel.setResetButtonState(categoryId, levelId, resetButton.isEnabled());
                         viewModel.setButtonData(categoryId, levelId, buttonData);
-                        //
+
+                        int categoryId = viewModel.getCategoryId();
+                        int levelId = viewModel.getLevelId();
+                        boolean value = true;
+                        viewModel.setCompleted(categoryId, levelId, value);
+
+                        Vibrator vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+                        VibrationEffect vibrationEffect = settingsViewModel.getVibrationEffect();
+                        if (vibrationEffect != null && vibrator != null) {
+                            vibrator.vibrate(vibrationEffect);
+                        }
+
                         Toast.makeText(getContext(), "Правильно!", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getContext(), "Не правильно!", Toast.LENGTH_SHORT).show();
@@ -2750,14 +2766,11 @@ public class level extends Fragment implements View.OnClickListener {
                     }
                 }
             }
-
             @Override
             public void afterTextChanged(Editable s) {
 
             }
         });
-
-
         return binding.getRoot();
     }
 
@@ -3244,7 +3257,6 @@ public class level extends Fragment implements View.OnClickListener {
             String buttonText = ((Button) view).getText().toString();
             String currentAnswer = answerEditText.getText().toString();
             if (currentAnswer.length() < getCorrectAnswerForCurrentQuestion().length()){
-
                 answerEditText.setText(currentAnswer + buttonText);
             }
             ((Button) view).setText("");
@@ -3252,12 +3264,12 @@ public class level extends Fragment implements View.OnClickListener {
         }
     }
 
-
-    @Override
+    /*@Override
     public void onPause(){
         super.onPause();
         viewModel.saveData(requireContext());
         viewModel.saveButtonData(requireContext());
+
     }
 
     @Override
@@ -3265,13 +3277,8 @@ public class level extends Fragment implements View.OnClickListener {
         super.onDestroy();
         viewModel.saveData(requireContext());
         viewModel.saveButtonData(requireContext());
-    }
 
-
-
-
-
-
+    }*/
 }
 
 

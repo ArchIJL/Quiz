@@ -11,16 +11,32 @@
         tools:layout="@layout/fragment_main_fragment">
         <action
             android:id="@+id/action_main_fragment_to_campaign"
-            app:destination="@id/campaign" />
+            app:destination="@id/campaign"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_main_fragment_to_time"
-            app:destination="@id/time" />
+            app:destination="@id/time"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_main_fragment_to_survival"
-            app:destination="@id/survival" />
+            app:destination="@id/survival"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_main_fragment_to_options"
-            app:destination="@id/options" />
+            android:id="@+id/action_main_fragment_to_settings"
+            app:destination="@id/settings"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/campaign"
@@ -29,10 +45,11 @@
         tools:layout="@layout/fragment_campaign" >
         <action
             android:id="@+id/action_campaign_to_set_level"
-            app:destination="@id/set_level" />
-        <action
-            android:id="@+id/action_campaign_to_main_fragment"
-            app:destination="@id/main_fragment" />
+            app:destination="@id/set_level"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/survival"
@@ -45,10 +62,10 @@
         android:label="fragment_time"
         tools:layout="@layout/fragment_time" />
     <fragment
-        android:id="@+id/options"
-        android:name="com.example.quiz.options"
-        android:label="fragment_options"
-        tools:layout="@layout/fragment_options" />
+        android:id="@+id/settings"
+        android:name="com.example.quiz.settings"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/set_level"
         android:name="com.example.quiz.set_level"
@@ -56,18 +73,15 @@
         tools:layout="@layout/fragment_set_level">
         <action
             android:id="@+id/action_set_level_to_level"
-            app:destination="@id/level" />
-        <action
-            android:id="@+id/action_set_level_to_campaign"
-            app:destination="@id/campaign" />
+            app:destination="@id/level"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/level"
         android:name="com.example.quiz.level"
         android:label="fragment_levels"
-        tools:layout="@layout/fragment_levels" >
-        <action
-            android:id="@+id/action_level_to_set_level"
-            app:destination="@id/set_level" />
-    </fragment>
+        tools:layout="@layout/fragment_levels" />
 </navigation>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -24,217 +25,213 @@
         android:orientation="vertical"
         android:layout_below="@id/toolbar">
 
-
         <LinearLayout
             android:id="@+id/container_campaign_2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp">
 
             <ScrollView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
+                    <androidx.gridlayout.widget.GridLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:orientation="horizontal">
+                        android:padding="10dp"
+                        app:columnCount="5">
 
                         <Button
                             android:id="@+id/set_level1"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:background="@drawable/answer_button_background"
                             android:text="@string/_food_1"
-                            android:gravity="center" />
+                            app:layout_columnWeight="1" />
 
                         <Button
                             android:id="@+id/set_level2"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:background="@drawable/answer_button_background"
                             android:text="@string/_food_2"
-                            android:gravity="center" />
+                            app:layout_columnWeight="1" />
 
                         <Button
                             android:id="@+id/set_level3"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:background="@drawable/answer_button_background"
                             android:text="@string/_food_3"
-                            android:gravity="center" />
+                            app:layout_columnWeight="1" />
 
                         <Button
                             android:id="@+id/set_level4"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:background="@drawable/answer_button_background"
                             android:text="@string/_food_4"
-                            android:gravity="center" />
+                            app:layout_columnWeight="1" />
 
                         <Button
                             android:id="@+id/set_level5"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:background="@drawable/answer_button_background"
                             android:text="@string/_food_5"
-                            android:gravity="center" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:orientation="horizontal">
+                            app:layout_columnWeight="1" />
 
                         <Button
                             android:id="@+id/set_level6"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/_food_6" />
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:background="@drawable/answer_button_background"
+                            android:text="@string/_food_6"
+                            app:layout_columnWeight="1" />
 
                         <Button
                             android:id="@+id/set_level7"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/_food_7" />
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:background="@drawable/answer_button_background"
+                            android:text="@string/_food_7"
+                            app:layout_columnWeight="1" />
 
                         <Button
                             android:id="@+id/set_level8"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/_food_8" />
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:background="@drawable/answer_button_background"
+                            android:text="@string/_food_8"
+                            app:layout_columnWeight="1" />
 
                         <Button
                             android:id="@+id/set_level9"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/_food_9" />
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:background="@drawable/answer_button_background"
+                            android:text="@string/_food_9"
+                            app:layout_columnWeight="1" />
 
                         <Button
                             android:id="@+id/set_level10"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/_food_10" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:orientation="horizontal">
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:background="@drawable/answer_button_background"
+                            android:text="@string/_food_10"
+                            app:layout_columnWeight="1" />
 
                         <Button
                             android:id="@+id/set_level11"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/_food_11" />
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:background="@drawable/answer_button_background"
+                            android:text="@string/_food_11"
+                            app:layout_columnWeight="1" />
 
                         <Button
                             android:id="@+id/set_level12"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/_food_12" />
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:background="@drawable/answer_button_background"
+                            android:text="@string/_food_12"
+                            app:layout_columnWeight="1" />
 
                         <Button
                             android:id="@+id/set_level13"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/_food_13" />
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:background="@drawable/answer_button_background"
+                            android:text="@string/_food_13"
+                            app:layout_columnWeight="1" />
 
                         <Button
                             android:id="@+id/set_level14"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/_food_14" />
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:background="@drawable/answer_button_background"
+                            android:text="@string/_food_14"
+                            app:layout_columnWeight="1" />
 
                         <Button
                             android:id="@+id/set_level15"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/_food_15" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:orientation="horizontal">
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:background="@drawable/answer_button_background"
+                            android:text="@string/_food_15"
+                            app:layout_columnWeight="1" />
 
                         <Button
                             android:id="@+id/set_level16"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/_food_16" />
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:background="@drawable/answer_button_background"
+                            android:text="@string/_food_16"
+                            app:layout_columnWeight="1" />
 
                         <Button
                             android:id="@+id/set_level17"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/_food_17" />
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:background="@drawable/answer_button_background"
+                            android:text="@string/_food_17"
+                            app:layout_columnWeight="1" />
 
                         <Button
                             android:id="@+id/set_level18"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/_food_18" />
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:background="@drawable/answer_button_background"
+                            android:text="@string/_food_18"
+                            app:layout_columnWeight="1" />
 
                         <Button
                             android:id="@+id/set_level19"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/_food_19" />
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:background="@drawable/answer_button_background"
+                            android:text="@string/_food_19"
+                            app:layout_columnWeight="1" />
 
                         <Button
                             android:id="@+id/set_level20"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/_food_20" />
-
-                    </LinearLayout>
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:background="@drawable/answer_button_background"
+                            android:text="@string/_food_20"
+                            app:layout_columnWeight="1" />
+                    </androidx.gridlayout.widget.GridLayout>
                 </LinearLayout>
             </ScrollView>
+
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

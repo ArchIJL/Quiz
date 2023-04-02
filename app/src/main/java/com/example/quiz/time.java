@@ -1,19 +1,26 @@
 package com.example.quiz;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.quiz.databinding.FragmentTimeBinding;
+import com.example.quiz.model.SettingsViewModel;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -35,10 +42,13 @@ public class time extends Fragment{
     private List<Question> mQuestions;
     private int mCurrentQuestionIndex;
     private int mNumCorrectAnswers;
+    private int mNumAnswers;
 
     private CountDownTimer mCountDownTimer;
     private static final long COUNTDOWN_INTERVAL = 1000; // 1 секунда
     private static final long COUNTDOWN_TIME = 5 * 60 * 1000; // 5 минут
+
+    private SettingsViewModel settingsViewModel;
 
 
     public static time newInstance() {
@@ -53,11 +63,10 @@ public class time extends Fragment{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        settingsViewModel = new ViewModelProvider(requireActivity()).get(SettingsViewModel.class);
+
         // Создание списка вопросов
-        mQuestions = new ArrayList<>();
-        mQuestions.add(new Question("Название столицы Франции?", "Париж", "Мадрид", "Берлин", "Рим"));
-        mQuestions.add(new Question("Какая самая большая планета солнечной системы?", "Юпитер", "Сатурн", "Нептун", "Уран"));
-        // Добавить новые вопросы...
+        mQuestions = QuestionBank.getQuestions();
 
         // Перемешать вопросы в случайном порядке
         Random random = new Random();
@@ -79,11 +88,11 @@ public class time extends Fragment{
             @Override
             public void onFinish() {
                 // Показать диалоговое окно результатов
-                DialogFragment resultsDialog = new ResultsDialogFragment();
+                DialogFragment resultsDialog = new ResultsDialogTimeFragment();
                 Bundle args = new Bundle();
                 args.putInt("numCorrectAnswers", mNumCorrectAnswers);
                 resultsDialog.setArguments(args);
-                resultsDialog.show(getParentFragmentManager(), "ResultsDialogFragment");
+                resultsDialog.show(getParentFragmentManager(), "ResultsDialogTimeFragment");
             }
         }.start();
     }
@@ -92,6 +101,16 @@ public class time extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentTimeBinding.inflate(inflater, container, false);
+        Toolbar toolbar = binding.toolbar;
+        toolbar.setTitle("На время");
+        ((AppCompatActivity)requireActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity)requireActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view1) {
+                requireActivity().onBackPressed();
+            }
+        });
 
         mTimerTextView = binding.timerTextView;
         mQuestionTextView = binding.questionTextView;
@@ -143,11 +162,17 @@ public class time extends Fragment{
 
     private void checkAnswer(Button selectedButton) {
         Question currentQuestion = mQuestions.get(mCurrentQuestionIndex);
+        mNumAnswers++;
         if (selectedButton.getText().toString().equals(currentQuestion.getCorrectOption())) {
             // Если ответ правильный, установить цвет фона кнопки на зелёный
             selectedButton.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.button_correct));
             mNumCorrectAnswers++;
         } else {
+            Vibrator vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+            VibrationEffect vibrationEffect = settingsViewModel.getVibrationEffect();
+            if (vibrationEffect != null && vibrator != null) {
+                vibrator.vibrate(vibrationEffect);
+            }
             // Если ответ неверный, установить цвет фона кнопки на красный
             selectedButton.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.button_incorrect));
         }
@@ -168,11 +193,12 @@ public class time extends Fragment{
                 } else {
                     mCountDownTimer.cancel();
                     // Показать диалог результатов
-                    DialogFragment resultsDialog = new ResultsDialogFragment();
+                    DialogFragment resultsDialog = new ResultsDialogTimeFragment();
                     Bundle args = new Bundle();
                     args.putInt("numCorrectAnswers", mNumCorrectAnswers);
+                    args.putInt("numAnswers", mNumAnswers);
                     resultsDialog.setArguments(args);
-                    resultsDialog.show(getParentFragmentManager(), "ResultsDialogFragment");
+                    resultsDialog.show(getParentFragmentManager(), "ResultsDialogTimeFragment");
                 }
 
                 // Сбросить цвет фона кнопок ответа и включить их
@@ -217,4 +243,36 @@ public class time extends Fragment{
         }
     }
 
+    public static class QuestionBank {
+
+        public static List<Question> getQuestions() {
+            List<Question> mQuestions = new ArrayList<>();
+            mQuestions.add(new Question("Название столицы Франции?", "Париж", "Мадрид", "Берлин", "Рим"));
+            mQuestions.add(new Question("Какая самая большая планета солнечной системы?", "Юпитер", "Сатурн", "Нептун", "Уран"));
+            mQuestions.add(new Question("Как называется самый большой океан на Земле?", "Тихий", "Индийский", "Атлантический", "Арктический"));
+            mQuestions.add(new Question("Кто является основателем корпорации Microsoft?", "Билл Гейтс", "Стив Джобс", "Марк Цукерберг", "Илон Маск"));
+            mQuestions.add(new Question("Какая страна выиграла чемпионат мира по футболу в 2018 году?", "Франция", "Бразилия", "Германия", "Испания"));
+            mQuestions.add(new Question("Как называется самая высокая гора в мире?", "гора Эверест", "Гора Килиманджаро", "Гора МакКинли", "Гора Аконкагуа"));
+            mQuestions.add(new Question("Какой ученый разработал теорию относительности?", "Альберт Эйнштейн", "Галилео Галилей", "Чарльз Дарвин", "Исаак Ньютон"));
+            mQuestions.add(new Question("Какой химический символ у золота?", "Au", "Ge", "Gd", "Ag"));
+            mQuestions.add(new Question("В каком году первый человек ступил на Луну?", "1969 г.", "1972 г.", "1968 г.", "1965 г."));
+            mQuestions.add(new Question("Какая столица Бразилии?", "Бразилиа", "Рио де Жанейро", "Сан-Паулу", "Буэнос айрес"));
+            mQuestions.add(new Question("Кто сыграл Гарри Поттера в сериале?", "Дэниел Рэдклифф", "Руперт Гринт", "Том Фелтон", "Эмма Ватсон"));
+            mQuestions.add(new Question("Какая самая маленькая единица жизни?", "Клетка", "Атом", "Молекула", "Орган"));
+            mQuestions.add(new Question("Какая река самая длинная в мире?", "Река Нил", "Река Амазонка", "Река Янцзы", "Река Миссисипи"));
+            mQuestions.add(new Question("Как называется самая высокая гора в Африке?", "Гора Килиманджаро", "Гора Эверест", "Гора МакКинли", "Гора Аконкагуа"));
+            mQuestions.add(new Question("Как называется самая большая пустыня в мире?", "Сахара", "Гоби", "Калахари", "Антарктическая"));
+            mQuestions.add(new Question("Какое животное самое большое в мире?", "Кит", "Слон", "Бегемот", "Носорог"));
+            mQuestions.add(new Question("Какой химический символ у воды?", "Н2О", "СО2", "NaCl", "О2"));
+            mQuestions.add(new Question("Какая страна является крупнейшим производителем кофе в мире?", "Бразилия", "Колумбия", "Эфиопия", "Вьетнам"));
+            mQuestions.add(new Question("Как зовут известного футболиста, выступавшего за «Барселону» и Аргентину?", "Лионель Месси", "Криштиану Роналду", "Килиан Мбаппе", "Неймар"));
+            mQuestions.add(new Question("Какая планета известна как «Красная планета»?", "Марс", "Юпитер", "Венера", "Сатурн"));
+            mQuestions.add(new Question("Кто написал знаменитую картину «Звездная ночь»?", "Винсент Ван Гог", "Леонардо да Винчи", "Пабло Пикассо", "Клод Моне"));
+            mQuestions.add(new Question(" Кто был первым человеком, ступившим на Луну?", "Нил Армстронг", "Базз Олдрин", "Майкл Коллинз", "Юрий Гагарин"));
+            mQuestions.add(new Question("Как зовут известного английского драматурга, написавшего «Ромео и Джульетту»?", "Вильям Шекспир", "Оскар Уайлд", "Джордж Бернард Шоу", "Сэмюэл Беккет"));
+            mQuestions.add(new Question("Какая страна самая большая по площади?", "Россия", "Канада", "Китай", "Соединенные Штаты"));
+            mQuestions.add(new Question("Как зовут известного итальянского астронома, открывшего четыре спутника Юпитера?", "Галилео Галилей", "Исаак Ньютон", "Иоганн Кеплер", "Николай Коперник"));
+            return mQuestions;
+        }
+    }
 }

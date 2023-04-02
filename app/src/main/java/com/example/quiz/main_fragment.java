@@ -54,7 +54,7 @@ public class main_fragment extends Fragment {
         binding.button3.setOnClickListener(v3 -> Navigation.findNavController(v3)
                 .navigate(R.id.action_main_fragment_to_survival));
         binding.button4.setOnClickListener(v4 -> Navigation.findNavController(v4)
-                .navigate(R.id.action_main_fragment_to_options));
+                .navigate(R.id.action_main_fragment_to_settings));
 
     }
 

@@ -2,7 +2,6 @@ package com.example.quiz.model;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 import android.util.Pair;
 
 import androidx.lifecycle.ViewModel;
@@ -13,13 +12,15 @@ import java.util.Map;
 
 public class MyViewModel extends ViewModel {
 
-    public final String TAG = "MyLogger";
-
     private int categoryId;
     private int levelId;
     private Map<Integer, String> correctAnswers = new HashMap<>(140);
     private HashMap<Pair<Integer, Integer>, ArrayList<Pair<String, Boolean>>> buttonData = new HashMap<>();
     private Map<Pair<Integer, Integer>, Boolean> resetButtonStates = new HashMap<>();
+    private Map<Integer, Map<Integer, Boolean>> completionStatus = new HashMap<>();
+
+
+
 
     public void setCategoryId(int categoryId){
         this.categoryId = categoryId;
@@ -45,38 +46,84 @@ public class MyViewModel extends ViewModel {
         return correctAnswers.get(questionNumber);
     }
 
-    public void saveData(Context context){
+    public void setCompleted(int categoryId, int levelId, boolean value) {
+        if (!completionStatus.containsKey(categoryId)) {
+            completionStatus.put(categoryId, new HashMap<Integer, Boolean>());
+        }
+        Map<Integer, Boolean> categoryCompletionStatus = completionStatus.get(categoryId);
+        categoryCompletionStatus.put(levelId, value);
+    }
+
+    public boolean getCompleted(int categoryId, int levelId) {
+        if (!completionStatus.containsKey(categoryId)) {
+            return false;
+        }
+        Map<Integer, Boolean> categoryCompletionStatus = completionStatus.get(categoryId);
+        if (!categoryCompletionStatus.containsKey(levelId)) {
+            return false;
+        }
+        return categoryCompletionStatus.get(levelId);
+    }
+
+    public void saveData(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("MyViewModel", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("levelId", levelId);
         editor.putInt("categoryId", categoryId);
         editor.putInt("numQuestions", correctAnswers.size());
-        for (Map.Entry<Integer, String> entry : correctAnswers.entrySet()){
+        for (Map.Entry<Integer, String> entry : correctAnswers.entrySet()) {
             editor.putString("correctAnswer" + entry.getKey(), entry.getValue());
         }
 
+        editor.putInt("numCategories", completionStatus.size());
+        int categoryIndex = 0;
+        for (Map.Entry<Integer, Map<Integer, Boolean>> categoryEntry : completionStatus.entrySet()) {
+            int categoryId = categoryEntry.getKey();
+            Map<Integer, Boolean> categoryCompletionStatus = categoryEntry.getValue();
+            editor.putInt("categoryId" + categoryIndex, categoryId);
+            editor.putInt("numLevels" + categoryIndex, categoryCompletionStatus.size());
+            int levelIndex = 0;
+            for (Map.Entry<Integer, Boolean> levelEntry : categoryCompletionStatus.entrySet()) {
+                int levelId = levelEntry.getKey();
+                boolean completed = levelEntry.getValue();
+                editor.putInt("levelId" + categoryIndex + "_" + levelIndex, levelId);
+                editor.putBoolean("completed" + categoryIndex + "_" + levelIndex, completed);
+                levelIndex++;
+            }
+            categoryIndex++;
+        }
         editor.apply();
-        Log.v(TAG, String.valueOf(editor));
     }
 
-    public void loadData(Context context){
+    public void loadData(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("MyViewModel", Context.MODE_PRIVATE);
         levelId = sharedPreferences.getInt("levelId", 0);
         categoryId = sharedPreferences.getInt("categoryId", 0);
         int numQuestions = sharedPreferences.getInt("numQuestions", 0);
 
         // Initialize all the correct answers to null
-        for (int i = 1; i <= 140; i++){
-            if (!correctAnswers.containsKey(i)){
+        for (int i = 1; i <= 140; i++) {
+            if (!correctAnswers.containsKey(i)) {
                 correctAnswers.put(i, null);
             }
         }
 
         // Update the correct answers for the questions that were previously answered
-        for (int i = 1; i <= numQuestions; i++){
+        for (int i = 1; i <= numQuestions; i++) {
             String correctAnswer = sharedPreferences.getString("correctAnswer" + i, null);
-            if (correctAnswer != null){
+            if (correctAnswer != null) {
                 correctAnswers.put(i, correctAnswer);
+            }
+        }
+
+        int numCategories = sharedPreferences.getInt("numCategories", 0);
+        for (int i = 0; i < numCategories; i++) {
+            int categoryId = sharedPreferences.getInt("categoryId" + i, 0);
+            int numLevels = sharedPreferences.getInt("numLevels" + i, 0);
+            for (int j = 0; j < numLevels; j++) {
+                int levelId = sharedPreferences.getInt("levelId" + i + "_" + j, 0);
+                boolean completed = sharedPreferences.getBoolean("completed" + i + "_" + j, false);
+                setCompleted(categoryId, levelId, completed);
             }
         }
     }
@@ -142,7 +189,4 @@ public class MyViewModel extends ViewModel {
             resetButtonStates.put(new Pair<>(categoryId, levelId), sharedPreferences.getBoolean("resetButtonState" + i, true));
         }
     }
-
-
-
 }

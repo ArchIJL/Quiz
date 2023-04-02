@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
@@ -14,12 +16,18 @@ import androidx.navigation.Navigation;
 import com.example.quiz.databinding.FragmentSetLevelBinding;
 import com.example.quiz.model.MyViewModel;
 
+import java.util.ArrayList;
+
 
 public class set_level extends Fragment {
+
+    public final String TAG = "set_level";
 
     private FragmentSetLevelBinding binding = null;
 
     private MyViewModel viewModel;
+
+    private ArrayList<Button> levels;
 
     public static set_level newInstance(String param1, String param2) {
         set_level fragment = new set_level();
@@ -67,6 +75,110 @@ public class set_level extends Fragment {
                 toolbar.setTitle("Кулинария");
                 break;
         }
+
+        levels = new ArrayList<>();
+        levels.add(binding.setLevel1);
+        levels.add(binding.setLevel2);
+        levels.add(binding.setLevel3);
+        levels.add(binding.setLevel4);
+        levels.add(binding.setLevel5);
+        levels.add(binding.setLevel6);
+        levels.add(binding.setLevel7);
+        levels.add(binding.setLevel8);
+        levels.add(binding.setLevel9);
+        levels.add(binding.setLevel10);
+        levels.add(binding.setLevel11);
+        levels.add(binding.setLevel12);
+        levels.add(binding.setLevel13);
+        levels.add(binding.setLevel14);
+        levels.add(binding.setLevel15);
+        levels.add(binding.setLevel16);
+        levels.add(binding.setLevel17);
+        levels.add(binding.setLevel18);
+        levels.add(binding.setLevel19);
+        levels.add(binding.setLevel20);
+
+        Button b1 = levels.get(0);
+        if (viewModel.getCompleted(categoryId, 1)){
+            b1.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.button_complete));
+        }
+        Button b2 = levels.get(1);
+        if (viewModel.getCompleted(categoryId, 2)){
+            b2.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.button_complete));
+        }
+        Button b3 = levels.get(2);
+        if (viewModel.getCompleted(categoryId, 3)){
+            b3.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.button_complete));
+        }
+        Button b4 = levels.get(3);
+        if (viewModel.getCompleted(categoryId, 4)){
+            b4.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.button_complete));
+        }
+        Button b5 = levels.get(4);
+        if (viewModel.getCompleted(categoryId, 5)){
+            b5.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.button_complete));
+        }
+        Button b6 = levels.get(5);
+        if (viewModel.getCompleted(categoryId, 6)){
+            b6.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.button_complete));
+        }
+        Button b7 = levels.get(6);
+        if (viewModel.getCompleted(categoryId, 7)){
+            b7.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.button_complete));
+        }
+        Button b8 = levels.get(7);
+        if (viewModel.getCompleted(categoryId, 8)){
+            b8.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.button_complete));
+        }
+        Button b9 = levels.get(8);
+        if (viewModel.getCompleted(categoryId, 9)){
+            b9.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.button_complete));
+        }
+        Button b10 = levels.get(9);
+        if (viewModel.getCompleted(categoryId, 10)){
+            b10.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.button_complete));
+        }
+        Button b11 = levels.get(10);
+        if (viewModel.getCompleted(categoryId, 11)){
+            b11.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.button_complete));
+        }
+        Button b12 = levels.get(11);
+        if (viewModel.getCompleted(categoryId, 12)){
+            b12.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.button_complete));
+        }
+        Button b13 = levels.get(12);
+        if (viewModel.getCompleted(categoryId, 13)){
+            b13.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.button_complete));
+        }
+        Button b14 = levels.get(13);
+        if (viewModel.getCompleted(categoryId, 14)){
+            b14.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.button_complete));
+        }
+        Button b15 = levels.get(14);
+        if (viewModel.getCompleted(categoryId, 15)){
+            b15.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.button_complete));
+        }
+        Button b16 = levels.get(15);
+        if (viewModel.getCompleted(categoryId, 16)){
+            b16.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.button_complete));
+        }
+        Button b17 = levels.get(16);
+        if (viewModel.getCompleted(categoryId, 17)){
+            b17.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.button_complete));
+        }
+        Button b18 = levels.get(17);
+        if (viewModel.getCompleted(categoryId, 18)){
+            b18.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.button_complete));
+        }
+        Button b19 = levels.get(18);
+        if (viewModel.getCompleted(categoryId, 19)){
+            b19.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.button_complete));
+        }
+        Button b20 = levels.get(19);
+        if (viewModel.getCompleted(categoryId, 20)){
+            b20.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.button_complete));
+        }
+
 
         return binding.getRoot();
     }
@@ -938,111 +1050,17 @@ public class set_level extends Fragment {
 
                 break;
         }
-
-
-        /*binding.foodLevel1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewModel.setLevelId(1);
-                Navigation.findNavController(view).navigate(R.id.action_food_level_to_level);
-            }
-        });
-
-        binding.foodLevel2.setOnClickListener(v -> {
-            viewModel.setLevelId(2);
-            Navigation.findNavController(view).navigate(R.id.action_food_level_to_level);
-        });
-
-        binding.foodLevel3.setOnClickListener(v -> {
-            viewModel.setLevelId(3);
-            Navigation.findNavController(view).navigate(R.id.action_food_level_to_level);
-        });
-
-        binding.foodLevel4.setOnClickListener(v -> {
-            viewModel.setLevelId(4);
-            Navigation.findNavController(view).navigate(R.id.action_food_level_to_level);
-        });
-
-        binding.foodLevel5.setOnClickListener(v -> {
-            viewModel.setLevelId(5);
-            Navigation.findNavController(view).navigate(R.id.action_food_level_to_level);
-        });
-
-        binding.foodLevel6.setOnClickListener(v -> {
-            viewModel.setLevelId(6);
-            Navigation.findNavController(view).navigate(R.id.action_food_level_to_level);
-        });
-
-        binding.foodLevel7.setOnClickListener(v -> {
-            viewModel.setLevelId(7);
-            Navigation.findNavController(view).navigate(R.id.action_food_level_to_level);
-        });
-
-        binding.foodLevel8.setOnClickListener(v -> {
-            viewModel.setLevelId(8);
-            Navigation.findNavController(view).navigate(R.id.action_food_level_to_level);
-        });
-
-        binding.foodLevel9.setOnClickListener(v -> {
-            viewModel.setLevelId(9);
-            Navigation.findNavController(view).navigate(R.id.action_food_level_to_level);
-        });
-
-        binding.foodLevel10.setOnClickListener(v -> {
-            viewModel.setLevelId(10);
-            Navigation.findNavController(view).navigate(R.id.action_food_level_to_level);
-        });
-
-        binding.foodLevel11.setOnClickListener(v -> {
-            viewModel.setLevelId(11);
-            Navigation.findNavController(view).navigate(R.id.action_food_level_to_level);
-        });
-
-        binding.foodLevel12.setOnClickListener(v -> {
-            viewModel.setLevelId(12);
-            Navigation.findNavController(view).navigate(R.id.action_food_level_to_level);
-        });
-
-        binding.foodLevel13.setOnClickListener(v -> {
-            viewModel.setLevelId(13);
-            Navigation.findNavController(view).navigate(R.id.action_food_level_to_level);
-        });
-
-        binding.foodLevel14.setOnClickListener(v -> {
-            viewModel.setLevelId(14);
-            Navigation.findNavController(view).navigate(R.id.action_food_level_to_level);
-        });
-
-        binding.foodLevel15.setOnClickListener(v -> {
-            viewModel.setLevelId(15);
-            Navigation.findNavController(view).navigate(R.id.action_food_level_to_level);
-        });
-
-        binding.foodLevel16.setOnClickListener(v -> {
-            viewModel.setLevelId(16);
-            Navigation.findNavController(view).navigate(R.id.action_food_level_to_level);
-        });
-
-        binding.foodLevel17.setOnClickListener(v -> {
-            viewModel.setLevelId(17);
-            Navigation.findNavController(view).navigate(R.id.action_food_level_to_level);
-        });
-
-        binding.foodLevel18.setOnClickListener(v -> {
-            viewModel.setLevelId(18);
-            Navigation.findNavController(view).navigate(R.id.action_food_level_to_level);
-        });
-
-        binding.foodLevel19.setOnClickListener(v -> {
-            viewModel.setLevelId(19);
-            Navigation.findNavController(view).navigate(R.id.action_food_level_to_level);
-        });
-
-        binding.foodLevel20.setOnClickListener(v -> {
-            viewModel.setLevelId(20);
-            Navigation.findNavController(view).navigate(R.id.action_food_level_to_level);
-        });*/
-
-
     }
+
+    /*@Override
+    public void onPause(){
+        super.onPause();
+        viewModel.saveVariables(requireActivity());
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        viewModel.saveVariables(requireActivity());
+    }*/
 }
