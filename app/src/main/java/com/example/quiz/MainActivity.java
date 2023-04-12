@@ -20,6 +20,9 @@ import com.example.quiz.model.MyViewModel;
 import com.example.quiz.model.SettingsViewModel;
 import com.example.quiz.notification.CheckLoginReceiver;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     private MyViewModel viewModel;
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         Window w = getWindow();
         w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.activity_main);
@@ -41,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
         viewModel.loadData(this);
         viewModel.loadButtonData(this);
 
+        boolean isSoundEnabled = settingsViewModel.isSoundEnabled();
+        if (isSoundEnabled){
+            startService(new Intent(this, SoundService.class));
+        }
     }
 
     private void scheduleCheckLogin() {
@@ -59,10 +67,44 @@ public class MainActivity extends AppCompatActivity {
         Log.d("CheckLoginService", "lastLoginTimeMillis = " + currentTimeMillis);
     }
 
+    public static class Question {
+
+        private final String mText;
+        private final List<String> mOptions;
+        private final String mCorrectOption;
+
+        public Question(String text, String option1, String option2, String option3, String option4) {
+            mText = text;
+            mOptions = new ArrayList<>();
+            mOptions.add(option1);
+            mOptions.add(option2);
+            mOptions.add(option3);
+            mOptions.add(option4);
+            mCorrectOption = option1;
+        }
+
+        public String getText() {
+            return mText;
+        }
+
+        public List<String> getOptions() {
+            return mOptions;
+        }
+
+        public String getCorrectOption() {
+            return mCorrectOption;
+        }
+    }
+
     @Override
     protected void onResume(){
         super.onResume();
         saveLastLoginTime();
+
+        boolean isSoundEnabled = settingsViewModel.isSoundEnabled();
+        if (isSoundEnabled){
+            startService(new Intent(this, SoundService.class));
+        }
     }
 
     @Override
@@ -72,6 +114,8 @@ public class MainActivity extends AppCompatActivity {
         settingsViewModel.saveSettings(this);
         viewModel.saveData(this);
         viewModel.saveButtonData(this);
+
+        stopService(new Intent(this, SoundService.class));
     }
 
     @Override
@@ -81,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
         settingsViewModel.saveSettings(this);
         viewModel.saveData(this);
         viewModel.saveButtonData(this);
-    }
 
+        stopService(new Intent(this, SoundService.class));
+    }
 }

@@ -51,7 +51,7 @@ public class CheckLoginReceiver extends BroadcastReceiver {
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
         // Создание уведомления с помощью NotificationCompat.Builder
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_baseline_notifications_24) // Поменять картинку на картинку приложения
+                .setSmallIcon(R.drawable.quiz_main) // Поменять картинку на картинку приложения
                 .setContentTitle("Тебя не было целую неделю")
                 .setContentText("Скорее заходи обратно")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)

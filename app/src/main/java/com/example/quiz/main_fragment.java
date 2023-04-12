@@ -18,18 +18,9 @@ public class main_fragment extends Fragment {
 
     private FragmentMainFragmentBinding binding = null;
 
-
-    public static main_fragment newInstance() {
-        main_fragment fragment = new main_fragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -47,6 +38,7 @@ public class main_fragment extends Fragment {
     @Override
     public void onViewCreated (View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
+
         binding.button1.setOnClickListener(v1 -> Navigation.findNavController(v1)
                 .navigate(R.id.action_main_fragment_to_campaign));
         binding.button2.setOnClickListener(v2 -> Navigation.findNavController(v2)
@@ -55,8 +47,5 @@ public class main_fragment extends Fragment {
                 .navigate(R.id.action_main_fragment_to_survival));
         binding.button4.setOnClickListener(v4 -> Navigation.findNavController(v4)
                 .navigate(R.id.action_main_fragment_to_settings));
-
     }
-
-
 }

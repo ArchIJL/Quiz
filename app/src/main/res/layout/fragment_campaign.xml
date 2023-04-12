@@ -21,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:layout_below="@id/toolbar1"
         android:orientation="vertical">
 
 
@@ -35,7 +36,8 @@
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:scrollbars="none">
 
                 <LinearLayout
                     android:id="@+id/container_campaign_4"
@@ -353,12 +355,7 @@
                                 android:textSize="10sp"
                                 android:textColor="@color/black" />
                         </RelativeLayout>
-
-
                     </LinearLayout>
-
-
-
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>

@@ -2,8 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ResultsDialogSurvivalFragment">
+    android:layout_height="wrap_content"
+    android:background="@drawable/custom_dialog"
+    tools:context=".dialogfragments.ResultsDialogSurvivalFragment">
 
 
     <LinearLayout
@@ -27,6 +28,25 @@
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/survival_text_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+
         </LinearLayout>
 
         <LinearLayout

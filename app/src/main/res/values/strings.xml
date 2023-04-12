@@ -1,12 +1,17 @@
 <resources>
     <string name="app_name">Quiz Game</string>
-    <string name="options">Options</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="time">На время</string>
     <string name="options_text">Настройки</string>
     <string name="campaign_text">Кампания</string>
     <string name="survival_text">Выживание</string>
     <string name="back_campaign">Назад</string>
+    <string name="sound">Звук</string>
+    <string name="vibration">Вибрация</string>
+    <string name="notification">Уведомления</string>
+    <string name="progress">Прогресс</string>
+
+    <string name="web_client_id">849738737756-ua3bctadteulmnujn9caac3hdcu9gon7.apps.googleusercontent.com</string>
+
     <string name="_food_1">1</string>
     <string name="_food_2">2</string>
     <string name="_food_3">3</string>
@@ -27,8 +32,18 @@
     <string name="_food_18">18</string>
     <string name="_food_19">19</string>
     <string name="_food_20">20</string>
-    <string name="quiz_game">Quiz Game</string>
-    <string name="num_correct_answers">Вы ответили правильно на %d из %d вопросов.</string>
+
+    <string name="num_correct_answers_time">Вы ответили правильно на %d из %d вопросов.</string>
+    <string name="num_correct_answers_survival">Вы ответили правильно на %d вопросов.</string>
+
+    <string name="num_score">Рекорд %d</string>
+    <string name="num_score_settings">рекорд %d</string>
+    <string name="num_campaign_settings">%d/140</string>
+
     <color name="correct">#4CAF50</color>
     <color name="incorrect">#F44336</color>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_nickname">Введите свой никнейм:</string>
+    <string name="accept">Принять</string>
 </resources>

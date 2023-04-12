@@ -29,13 +29,6 @@ public class set_level extends Fragment {
 
     private ArrayList<Button> levels;
 
-    public static set_level newInstance(String param1, String param2) {
-        set_level fragment = new set_level();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +40,8 @@ public class set_level extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentSetLevelBinding.inflate(inflater, container, false);
+
+
         Toolbar toolbar = binding.toolbar;
         ((AppCompatActivity) requireActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity) requireActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -1051,16 +1046,4 @@ public class set_level extends Fragment {
                 break;
         }
     }
-
-    /*@Override
-    public void onPause(){
-        super.onPause();
-        viewModel.saveVariables(requireActivity());
-    }
-
-    @Override
-    public void onDestroy(){
-        super.onDestroy();
-        viewModel.saveVariables(requireActivity());
-    }*/
 }

@@ -22,6 +22,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 
 import com.example.quiz.databinding.FragmentLevelsBinding;
@@ -50,7 +51,6 @@ public class level extends Fragment implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         viewModel = new ViewModelProvider(requireActivity()).get(MyViewModel.class);
         settingsViewModel = new ViewModelProvider(requireActivity()).get(SettingsViewModel.class);
     }
@@ -60,6 +60,7 @@ public class level extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentLevelsBinding.inflate(inflater, container, false);
+
         Toolbar toolbar = binding.toolbar;
         ((AppCompatActivity)requireActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity)requireActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -3241,14 +3242,26 @@ public class level extends Fragment implements View.OnClickListener {
         int levelId = viewModel.getLevelId();
         viewModel.setLevelId(levelId + 1);
         Navigation.findNavController(getView()).popBackStack();
-        Navigation.findNavController(requireActivity(), R.id.fragmentContainerView).navigate(R.id.level);
+        NavOptions navOptions = new NavOptions.Builder()
+                .setEnterAnim(R.anim.slide_in_right)
+                .setExitAnim(R.anim.slide_out_left)
+                .setPopEnterAnim(R.anim.slide_in_left)
+                .setPopExitAnim(R.anim.slide_out_right)
+                .build();
+        Navigation.findNavController(requireActivity(), R.id.fragmentContainerView).navigate(R.id.level, null, navOptions);
     }
 
     public void onMoveBackQuestion(){
         int levelId = viewModel.getLevelId();
         viewModel.setLevelId(levelId - 1);
         Navigation.findNavController(getView()).popBackStack();
-        Navigation.findNavController(requireActivity(), R.id.fragmentContainerView).navigate(R.id.level);
+        NavOptions navOptions = new NavOptions.Builder()
+                .setEnterAnim(R.anim.slide_in_left)
+                .setExitAnim(R.anim.slide_out_right)
+                .setPopEnterAnim(R.anim.slide_in_left)
+                .setPopExitAnim(R.anim.slide_out_right)
+                .build();
+        Navigation.findNavController(requireActivity(), R.id.fragmentContainerView).navigate(R.id.level, null, navOptions);
     }
 
     @Override
