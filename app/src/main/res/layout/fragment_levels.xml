@@ -1,45 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".level">
+    tools:context=".fragments.Level">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/oval1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="-50dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/oval"
+            android:backgroundTint="@color/oval5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/rect1"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="-50dp"
+            android:background="@drawable/rect"
+            android:backgroundTint="@color/rect4"
+            android:rotation="45"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/oval2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="-100dp"
+            android:layout_marginTop="-150dp"
+            android:background="@drawable/oval"
+            android:backgroundTint="@color/oval2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/rect2"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="160dp"
+            android:layout_marginBottom="130dp"
+            android:background="@drawable/rect"
+            android:backgroundTint="@color/rect7"
+            android:rotation="-70"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <View
+            android:id="@+id/rect3"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/rect"
+            android:backgroundTint="@color/rect9"
+            android:rotation="30"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/oval3"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="-20dp"
+            android:layout_marginBottom="70dp"
+            android:background="@drawable/oval"
+            android:backgroundTint="@color/oval1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <View
+            android:id="@+id/oval4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/oval"
+            android:backgroundTint="@color/oval3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <View
+            android:id="@+id/rect4"
+            android:layout_width="50dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="-40dp"
+            android:layout_marginBottom="250dp"
+            android:background="@drawable/rect"
+            android:backgroundTint="@color/rect8"
+            android:rotation="45"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/toolbar"
+        android:elevation="15dp"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        android:elevation="15dp"/>
+        app:titleTextColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_above="@id/layout_1"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/layout_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-        <TextView
-            android:id="@+id/textQuestions"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_gravity="end"
+            android:layout_margin="10dp"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/info_button"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="end"
+                android:background="@android:color/transparent"
+                android:src="@drawable/baseline_info_24"
+                android:visibility="gone"
+                android:contentDescription="@string/info_button"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginEnd="20dp"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="30sp" />
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="@drawable/answer_button_background"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textQuestions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="26sp" />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layout_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/toolbar2"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/toolbar2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -65,6 +205,7 @@
             android:orientation="vertical">
 
             <androidx.gridlayout.widget.GridLayout
+                android:id="@+id/gridLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -78,7 +219,8 @@
                     android:layout_margin="3dp"
                     android:background="@drawable/answer_button_background"
                     android:textColor="@color/black"
-                    app:layout_columnWeight="1" />
+                    app:layout_columnWeight="1"
+                    android:contentDescription="@string/answer_button"/>
 
                 <Button
                     android:id="@+id/button2"
@@ -87,7 +229,8 @@
                     android:layout_margin="3dp"
                     android:background="@drawable/answer_button_background"
                     android:textColor="@color/black"
-                    app:layout_columnWeight="1" />
+                    app:layout_columnWeight="1"
+                    android:contentDescription="@string/answer_button"/>
 
                 <Button
                     android:id="@+id/button3"
@@ -96,7 +239,8 @@
                     android:layout_margin="3dp"
                     android:background="@drawable/answer_button_background"
                     android:textColor="@color/black"
-                    app:layout_columnWeight="1" />
+                    app:layout_columnWeight="1"
+                    android:contentDescription="@string/answer_button"/>
 
                 <Button
                     android:id="@+id/button4"
@@ -105,7 +249,8 @@
                     android:layout_margin="3dp"
                     android:background="@drawable/answer_button_background"
                     android:textColor="@color/black"
-                    app:layout_columnWeight="1" />
+                    app:layout_columnWeight="1"
+                    android:contentDescription="@string/answer_button"/>
 
                 <Button
                     android:id="@+id/button5"
@@ -114,7 +259,8 @@
                     android:layout_margin="3dp"
                     android:background="@drawable/answer_button_background"
                     android:textColor="@color/black"
-                    app:layout_columnWeight="1" />
+                    app:layout_columnWeight="1"
+                    android:contentDescription="@string/answer_button"/>
 
                 <Button
                     android:id="@+id/button6"
@@ -123,7 +269,8 @@
                     android:layout_margin="3dp"
                     android:background="@drawable/answer_button_background"
                     android:textColor="@color/black"
-                    app:layout_columnWeight="1" />
+                    app:layout_columnWeight="1"
+                    android:contentDescription="@string/answer_button"/>
 
                 <Button
                     android:id="@+id/button7"
@@ -132,7 +279,8 @@
                     android:layout_margin="3dp"
                     android:background="@drawable/answer_button_background"
                     android:textColor="@color/black"
-                    app:layout_columnWeight="1" />
+                    app:layout_columnWeight="1"
+                    android:contentDescription="@string/answer_button"/>
 
                 <Button
                     android:id="@+id/button8"
@@ -141,7 +289,8 @@
                     android:layout_margin="3dp"
                     android:background="@drawable/answer_button_background"
                     android:textColor="@color/black"
-                    app:layout_columnWeight="1" />
+                    app:layout_columnWeight="1"
+                    android:contentDescription="@string/answer_button"/>
 
                 <Button
                     android:id="@+id/button9"
@@ -150,7 +299,8 @@
                     android:layout_margin="3dp"
                     android:background="@drawable/answer_button_background"
                     android:textColor="@color/black"
-                    app:layout_columnWeight="1" />
+                    app:layout_columnWeight="1"
+                    android:contentDescription="@string/answer_button"/>
 
                 <Button
                     android:id="@+id/button10"
@@ -159,7 +309,8 @@
                     android:layout_margin="3dp"
                     android:background="@drawable/answer_button_background"
                     android:textColor="@color/black"
-                    app:layout_columnWeight="1" />
+                    app:layout_columnWeight="1"
+                    android:contentDescription="@string/answer_button"/>
 
                 <Button
                     android:id="@+id/button11"
@@ -167,8 +318,10 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="3dp"
                     android:background="@drawable/answer_button_background"
+                    android:contentDescription="@string/answer_button"
                     android:textColor="@color/black"
-                    app:layout_columnWeight="1" />
+                    app:layout_columnWeight="1"
+                    tools:ignore="RedundantDescriptionCheck" />
 
                 <Button
                     android:id="@+id/button12"
@@ -177,7 +330,8 @@
                     android:layout_margin="3dp"
                     android:background="@drawable/answer_button_background"
                     android:textColor="@color/black"
-                    app:layout_columnWeight="1" />
+                    app:layout_columnWeight="1"
+                    android:contentDescription="@string/answer_button"/>
             </androidx.gridlayout.widget.GridLayout>
         </LinearLayout>
 
@@ -189,7 +343,8 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="15dp"
             android:background="@drawable/answer_button_background"
-            android:text="Сбросить" />
+            android:text="@string/reset"
+            android:textColor="@color/black"/>
 
 
     </LinearLayout>
@@ -198,30 +353,33 @@
         android:id="@+id/toolbar2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:layout_alignParentBottom="true"
+        android:background="@color/toolbar"
+        android:elevation="15dp"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        android:elevation="15dp"
-        android:layout_alignParentBottom="true">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
             android:id="@+id/toolbar_left_arrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="start"
+            android:background="@android:color/transparent"
             android:src="@drawable/ic_baseline_arrow_back_24"
-            android:background="@color/white"
-            />
+            android:contentDescription="@string/past_level"/>
 
         <ImageButton
             android:id="@+id/toolbar_right_arrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="end"
+            android:layout_marginEnd="15dp"
+            android:background="@android:color/transparent"
             android:src="@drawable/ic_baseline_arrow_forward_24"
-            android:background="@color/white"
-            android:layout_marginEnd="15dp"/>
+            android:contentDescription="@string/next_level"/>
 
     </androidx.appcompat.widget.Toolbar>
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

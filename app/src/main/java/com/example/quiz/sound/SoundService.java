@@ -1,4 +1,4 @@
-package com.example.quiz;
+package com.example.quiz.sound;
 
 import android.app.Service;
 import android.content.Intent;
@@ -6,6 +6,8 @@ import android.media.MediaPlayer;
 import android.os.IBinder;
 
 import androidx.annotation.Nullable;
+
+import com.example.quiz.R;
 
 public class SoundService extends Service {
 

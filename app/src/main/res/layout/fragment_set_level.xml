@@ -1,238 +1,336 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".set_level">
+    tools:context=".fragments.Set_level">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/oval1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="-50dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/oval"
+            android:backgroundTint="@color/oval5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/rect1"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="-50dp"
+            android:background="@drawable/rect"
+            android:backgroundTint="@color/rect4"
+            android:rotation="45"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/oval2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="-100dp"
+            android:layout_marginTop="-150dp"
+            android:background="@drawable/oval"
+            android:backgroundTint="@color/oval2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/rect2"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginBottom="200dp"
+            android:background="@drawable/rect"
+            android:backgroundTint="@color/rect7"
+            android:rotation="-70"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <View
+            android:id="@+id/rect3"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/rect"
+            android:backgroundTint="@color/rect9"
+            android:rotation="30"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/oval3"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="-20dp"
+            android:layout_marginBottom="70dp"
+            android:background="@drawable/oval"
+            android:backgroundTint="@color/oval1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <View
+            android:id="@+id/oval4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/oval"
+            android:backgroundTint="@color/oval3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <View
+            android:id="@+id/rect4"
+            android:layout_width="50dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="-40dp"
+            android:layout_marginBottom="250dp"
+            android:background="@drawable/rect"
+            android:backgroundTint="@color/rect8"
+            android:rotation="45"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/toolbar"
+        android:elevation="10dp"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        android:elevation="10dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/container_campaign_1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
         android:gravity="center"
         android:orientation="vertical"
-        android:layout_below="@id/toolbar">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-        <LinearLayout
-            android:id="@+id/container_campaign_2"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:layout_marginTop="10dp"
+            android:scrollbars="none">
 
-            <ScrollView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:scrollbars="none">
+                android:orientation="vertical">
 
-                <LinearLayout
+                <androidx.gridlayout.widget.GridLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    app:columnCount="4">
 
-                    <androidx.gridlayout.widget.GridLayout
-                        android:layout_width="match_parent"
+                    <Button
+                        android:id="@+id/set_level1"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:padding="10dp"
-                        app:columnCount="5">
+                        android:layout_margin="3dp"
+                        android:background="@drawable/answer_button_background"
+                        android:text="@string/_food_1"
+                        app:layout_columnWeight="1" />
 
-                        <Button
-                            android:id="@+id/set_level1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="3dp"
-                            android:background="@drawable/answer_button_background"
-                            android:text="@string/_food_1"
-                            app:layout_columnWeight="1" />
+                    <Button
+                        android:id="@+id/set_level2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/answer_button_background"
+                        android:text="@string/_food_2"
+                        app:layout_columnWeight="1" />
 
-                        <Button
-                            android:id="@+id/set_level2"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="3dp"
-                            android:background="@drawable/answer_button_background"
-                            android:text="@string/_food_2"
-                            app:layout_columnWeight="1" />
+                    <Button
+                        android:id="@+id/set_level3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/answer_button_background"
+                        android:text="@string/_food_3"
+                        app:layout_columnWeight="1" />
 
-                        <Button
-                            android:id="@+id/set_level3"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="3dp"
-                            android:background="@drawable/answer_button_background"
-                            android:text="@string/_food_3"
-                            app:layout_columnWeight="1" />
+                    <Button
+                        android:id="@+id/set_level4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/answer_button_background"
+                        android:text="@string/_food_4"
+                        app:layout_columnWeight="1" />
 
-                        <Button
-                            android:id="@+id/set_level4"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="3dp"
-                            android:background="@drawable/answer_button_background"
-                            android:text="@string/_food_4"
-                            app:layout_columnWeight="1" />
+                    <Button
+                        android:id="@+id/set_level5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/answer_button_background"
+                        android:text="@string/_food_5"
+                        app:layout_columnWeight="1" />
 
-                        <Button
-                            android:id="@+id/set_level5"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="3dp"
-                            android:background="@drawable/answer_button_background"
-                            android:text="@string/_food_5"
-                            app:layout_columnWeight="1" />
+                    <Button
+                        android:id="@+id/set_level6"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/answer_button_background"
+                        android:text="@string/_food_6"
+                        app:layout_columnWeight="1" />
 
-                        <Button
-                            android:id="@+id/set_level6"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="3dp"
-                            android:background="@drawable/answer_button_background"
-                            android:text="@string/_food_6"
-                            app:layout_columnWeight="1" />
+                    <Button
+                        android:id="@+id/set_level7"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/answer_button_background"
+                        android:text="@string/_food_7"
+                        app:layout_columnWeight="1" />
 
-                        <Button
-                            android:id="@+id/set_level7"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="3dp"
-                            android:background="@drawable/answer_button_background"
-                            android:text="@string/_food_7"
-                            app:layout_columnWeight="1" />
+                    <Button
+                        android:id="@+id/set_level8"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/answer_button_background"
+                        android:text="@string/_food_8"
+                        app:layout_columnWeight="1" />
 
-                        <Button
-                            android:id="@+id/set_level8"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="3dp"
-                            android:background="@drawable/answer_button_background"
-                            android:text="@string/_food_8"
-                            app:layout_columnWeight="1" />
+                    <Button
+                        android:id="@+id/set_level9"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/answer_button_background"
+                        android:text="@string/_food_9"
+                        app:layout_columnWeight="1" />
 
-                        <Button
-                            android:id="@+id/set_level9"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="3dp"
-                            android:background="@drawable/answer_button_background"
-                            android:text="@string/_food_9"
-                            app:layout_columnWeight="1" />
+                    <Button
+                        android:id="@+id/set_level10"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/answer_button_background"
+                        android:text="@string/_food_10"
+                        app:layout_columnWeight="1" />
 
-                        <Button
-                            android:id="@+id/set_level10"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="3dp"
-                            android:background="@drawable/answer_button_background"
-                            android:text="@string/_food_10"
-                            app:layout_columnWeight="1" />
+                    <Button
+                        android:id="@+id/set_level11"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/answer_button_background"
+                        android:text="@string/_food_11"
+                        app:layout_columnWeight="1" />
 
-                        <Button
-                            android:id="@+id/set_level11"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="3dp"
-                            android:background="@drawable/answer_button_background"
-                            android:text="@string/_food_11"
-                            app:layout_columnWeight="1" />
+                    <Button
+                        android:id="@+id/set_level12"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/answer_button_background"
+                        android:text="@string/_food_12"
+                        app:layout_columnWeight="1" />
 
-                        <Button
-                            android:id="@+id/set_level12"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="3dp"
-                            android:background="@drawable/answer_button_background"
-                            android:text="@string/_food_12"
-                            app:layout_columnWeight="1" />
+                    <Button
+                        android:id="@+id/set_level13"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/answer_button_background"
+                        android:text="@string/_food_13"
+                        app:layout_columnWeight="1" />
 
-                        <Button
-                            android:id="@+id/set_level13"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="3dp"
-                            android:background="@drawable/answer_button_background"
-                            android:text="@string/_food_13"
-                            app:layout_columnWeight="1" />
+                    <Button
+                        android:id="@+id/set_level14"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/answer_button_background"
+                        android:text="@string/_food_14"
+                        app:layout_columnWeight="1" />
 
-                        <Button
-                            android:id="@+id/set_level14"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="3dp"
-                            android:background="@drawable/answer_button_background"
-                            android:text="@string/_food_14"
-                            app:layout_columnWeight="1" />
+                    <Button
+                        android:id="@+id/set_level15"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/answer_button_background"
+                        android:text="@string/_food_15"
+                        app:layout_columnWeight="1" />
 
-                        <Button
-                            android:id="@+id/set_level15"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="3dp"
-                            android:background="@drawable/answer_button_background"
-                            android:text="@string/_food_15"
-                            app:layout_columnWeight="1" />
+                    <Button
+                        android:id="@+id/set_level16"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/answer_button_background"
+                        android:text="@string/_food_16"
+                        app:layout_columnWeight="1" />
 
-                        <Button
-                            android:id="@+id/set_level16"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="3dp"
-                            android:background="@drawable/answer_button_background"
-                            android:text="@string/_food_16"
-                            app:layout_columnWeight="1" />
+                    <Button
+                        android:id="@+id/set_level17"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/answer_button_background"
+                        android:text="@string/_food_17"
+                        app:layout_columnWeight="1" />
 
-                        <Button
-                            android:id="@+id/set_level17"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="3dp"
-                            android:background="@drawable/answer_button_background"
-                            android:text="@string/_food_17"
-                            app:layout_columnWeight="1" />
+                    <Button
+                        android:id="@+id/set_level18"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/answer_button_background"
+                        android:text="@string/_food_18"
+                        app:layout_columnWeight="1" />
 
-                        <Button
-                            android:id="@+id/set_level18"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="3dp"
-                            android:background="@drawable/answer_button_background"
-                            android:text="@string/_food_18"
-                            app:layout_columnWeight="1" />
+                    <Button
+                        android:id="@+id/set_level19"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/answer_button_background"
+                        android:text="@string/_food_19"
+                        app:layout_columnWeight="1" />
 
-                        <Button
-                            android:id="@+id/set_level19"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="3dp"
-                            android:background="@drawable/answer_button_background"
-                            android:text="@string/_food_19"
-                            app:layout_columnWeight="1" />
+                    <Button
+                        android:id="@+id/set_level20"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/answer_button_background"
+                        android:text="@string/_food_20"
+                        app:layout_columnWeight="1" />
+                </androidx.gridlayout.widget.GridLayout>
+            </LinearLayout>
+        </ScrollView>
 
-                        <Button
-                            android:id="@+id/set_level20"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="3dp"
-                            android:background="@drawable/answer_button_background"
-                            android:text="@string/_food_20"
-                            app:layout_columnWeight="1" />
-                    </androidx.gridlayout.widget.GridLayout>
-                </LinearLayout>
-            </ScrollView>
-
-        </LinearLayout>
     </LinearLayout>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

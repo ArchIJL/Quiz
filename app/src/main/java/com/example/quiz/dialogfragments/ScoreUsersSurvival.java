@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quiz.R;
-import com.example.quiz.UserRecord;
-import com.example.quiz.UserRecordAdapter;
+import com.example.quiz.userrecord.UserRecord;
+import com.example.quiz.userrecord.UserRecordAdapter;
 import com.example.quiz.databinding.FragmentScoreUsersSurvivalBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
@@ -63,7 +63,9 @@ public class ScoreUsersSurvival extends DialogFragment {
                 String nickname = userSnapshot.getString("nickname");
                 Integer score = userSnapshot.getLong("ScoreSurvival").intValue();
                 Log.v("ScoreUser", String.valueOf(score));
-                userRecords.add(new UserRecord(nickname, score.intValue()));
+                if (score > 0) {
+                    userRecords.add(new UserRecord(nickname, score.intValue()));
+                }
             }
             userRecords.sort((o1, o2) -> o1.getScore() - o2.getScore());
             Collections.reverse(userRecords);

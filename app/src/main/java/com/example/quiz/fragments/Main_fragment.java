@@ -1,4 +1,4 @@
-package com.example.quiz;
+package com.example.quiz.fragments;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -8,19 +8,28 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import com.example.quiz.R;
 import com.example.quiz.databinding.FragmentMainFragmentBinding;
+import com.example.quiz.model.MyViewModel;
+import com.example.quiz.model.QuestionsTaSViewModel;
 
-public class main_fragment extends Fragment {
+public class Main_fragment extends Fragment {
 
     public final String TAG = "main";
 
+    private MyViewModel viewModel;
+    private QuestionsTaSViewModel TaSViewModel;
     private FragmentMainFragmentBinding binding = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+        TaSViewModel = new ViewModelProvider(this).get(QuestionsTaSViewModel.class);
     }
 
     @Override

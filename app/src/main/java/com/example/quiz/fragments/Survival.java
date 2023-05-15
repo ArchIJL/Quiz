@@ -1,4 +1,4 @@
-package com.example.quiz;
+package com.example.quiz.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -19,6 +19,8 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.quiz.questions.Question;
+import com.example.quiz.R;
 import com.example.quiz.databinding.FragmentSurvivalBinding;
 import com.example.quiz.dialogfragments.ResultsDialogSurvivalFragment;
 import com.example.quiz.model.QuestionsTaSViewModel;
@@ -28,7 +30,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class survival extends Fragment {
+public class Survival extends Fragment {
 
     public final String TAG = "survival";
 
@@ -43,7 +45,7 @@ public class survival extends Fragment {
     private int mCurrentQuestionIndex;
     private int mNumCorrectAnswers;
     private int mNumAnswers;
-    private List<MainActivity.Question> mQuestions;
+    private List<Question> mQuestions;
     private int mLives = 3;
 
     private SettingsViewModel settingsViewModel;
@@ -58,7 +60,9 @@ public class survival extends Fragment {
 
         // Создание списка вопросов
         mQuestions = new ArrayList<>();
+        questionsTaSViewModel.loadQuestionsFromPrefs(getContext());
         mQuestions = questionsTaSViewModel.getQuestions();
+
 
         Log.d("firebaseSurvival", String.valueOf(mQuestions));
 
@@ -74,12 +78,7 @@ public class survival extends Fragment {
         toolbar.setTitle("Выживание");
         ((AppCompatActivity)requireActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity)requireActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view1) {
-                requireActivity().onBackPressed();
-            }
-        });
+        toolbar.setNavigationOnClickListener(view1 -> requireActivity().onBackPressed());
 
 
         mQuestionTextView = binding.questionTextView;
@@ -98,7 +97,7 @@ public class survival extends Fragment {
         return binding.getRoot();
     }
 
-    private void setQuestion(MainActivity.Question question) {
+    private void setQuestion(Question question) {
         mQuestionTextView.setText(question.getText());
         Collections.shuffle(question.getOptions());
         mOption1Button.setText(question.getOptions().get(0));
@@ -108,7 +107,7 @@ public class survival extends Fragment {
     }
 
     private void checkAnswer(Button selectedButton) {
-        MainActivity.Question currentQuestion = mQuestions.get(mCurrentQuestionIndex);
+        Question currentQuestion = mQuestions.get(mCurrentQuestionIndex);
         mNumAnswers++;
         if (selectedButton.getText().toString().equals(currentQuestion.getCorrectOption())) {
             // Если ответ правильный, установить цвет фона кнопки на зелёный
@@ -154,37 +153,34 @@ public class survival extends Fragment {
         mOption4Button.setEnabled(false);
 
         // Время для того, чтобы пользователь увидел изменение кнопки
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // Перейти к следующему вопросу или завершить тест
-                mCurrentQuestionIndex++;
-                if (mCurrentQuestionIndex < mQuestions.size()) {
-                    setQuestion(mQuestions.get(mCurrentQuestionIndex));
-                } else {
-                    int numCorrectAnswers = settingsViewModel.getHighestScoreSurvival().getValue();
-                    if (mNumCorrectAnswers > numCorrectAnswers){
-                        settingsViewModel.setHighestScoreSurvival(mNumCorrectAnswers);
-                    }
-                    // Показать диалог результатов
-                    DialogFragment resultsDialog = new ResultsDialogSurvivalFragment();
-                    Bundle args = new Bundle();
-                    args.putInt("numCorrectAnswers", mNumCorrectAnswers);
-                    args.putInt("numAnswers", mNumAnswers);
-                    resultsDialog.setArguments(args);
-                    resultsDialog.show(getParentFragmentManager(), "ResultsDialogSurvivalFragment");
+        new Handler().postDelayed(() -> {
+            // Перейти к следующему вопросу или завершить тест
+            mCurrentQuestionIndex++;
+            if (mCurrentQuestionIndex < mQuestions.size()) {
+                setQuestion(mQuestions.get(mCurrentQuestionIndex));
+            } else {
+                int numCorrectAnswers = settingsViewModel.getHighestScoreSurvival().getValue();
+                if (mNumCorrectAnswers > numCorrectAnswers){
+                    settingsViewModel.setHighestScoreSurvival(mNumCorrectAnswers);
                 }
-
-                // Сбросить цвет фона кнопок ответа и включить их
-                mOption1Button.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.answer_button_background));
-                mOption2Button.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.answer_button_background));
-                mOption3Button.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.answer_button_background));
-                mOption4Button.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.answer_button_background));
-                mOption1Button.setEnabled(true);
-                mOption2Button.setEnabled(true);
-                mOption3Button.setEnabled(true);
-                mOption4Button.setEnabled(true);
+                // Показать диалог результатов
+                DialogFragment resultsDialog = new ResultsDialogSurvivalFragment();
+                Bundle args = new Bundle();
+                args.putInt("numCorrectAnswers", mNumCorrectAnswers);
+                args.putInt("numAnswers", mNumAnswers);
+                resultsDialog.setArguments(args);
+                resultsDialog.show(getParentFragmentManager(), "ResultsDialogSurvivalFragment");
             }
+
+            // Сбросить цвет фона кнопок ответа и включить их
+            mOption1Button.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.answer_button_background));
+            mOption2Button.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.answer_button_background));
+            mOption3Button.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.answer_button_background));
+            mOption4Button.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.answer_button_background));
+            mOption1Button.setEnabled(true);
+            mOption2Button.setEnabled(true);
+            mOption3Button.setEnabled(true);
+            mOption4Button.setEnabled(true);
         }, 1000); // Подождать 1 секунду, прежде чем перейти к следующему вопросу
     }
 }

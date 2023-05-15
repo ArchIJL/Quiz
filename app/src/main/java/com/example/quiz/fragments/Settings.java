@@ -1,4 +1,4 @@
-package com.example.quiz;
+package com.example.quiz.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +16,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.quiz.R;
 import com.example.quiz.databinding.FragmentSettingsBinding;
 import com.example.quiz.dialogfragments.AuthenticationGoogle;
 import com.example.quiz.dialogfragments.DialogNickname;
@@ -23,6 +24,7 @@ import com.example.quiz.dialogfragments.ScoreUsersSurvival;
 import com.example.quiz.dialogfragments.ScoreUsersTime;
 import com.example.quiz.model.MyViewModel;
 import com.example.quiz.model.SettingsViewModel;
+import com.example.quiz.sound.SoundService;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
@@ -32,7 +34,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.List;
 
 
-public class settings extends Fragment {
+public class Settings extends Fragment {
 
     private FragmentSettingsBinding binding = null;
 
@@ -63,12 +65,7 @@ public class settings extends Fragment {
         toolbar.setTitle("Опции");
         ((AppCompatActivity)requireActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity)requireActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view1) {
-                requireActivity().onBackPressed();
-            }
-        });
+        toolbar.setNavigationOnClickListener(view1 -> requireActivity().onBackPressed());
 
         mProgressCampaign = binding.progressCampaign;
         mProgressTime = binding.progressTime;
@@ -96,55 +93,60 @@ public class settings extends Fragment {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
 
-        mScoreTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (user != null) {
-                    List<? extends UserInfo> providerData = user.getProviderData();
-                    for (UserInfo info : providerData) {
-                        if (info.getProviderId().equals("google.com")) {
-                            String uid = user.getUid();
-                            DocumentReference userRef = FirebaseFirestore.getInstance().collection("users").document(uid);
-                            userRef.get().addOnSuccessListener(documentSnapshot -> {
-                                if (documentSnapshot != null && documentSnapshot.exists() && documentSnapshot.contains("nickname")) {
-                                    DialogFragment scoreUsers = new ScoreUsersTime();
-                                    scoreUsers.show(getParentFragmentManager(), "ScoreUsers");
-                                    Log.d("Firestore Nickname", "Such document");
-                                } else {
-                                    DialogFragment nicknameUser = new DialogNickname();
-                                    nicknameUser.show(getParentFragmentManager(), "nicknameUser");
-                                    Log.d("Firestore Nickname", "No such document");
-                                }
-                            }).addOnFailureListener(e -> Log.e("Firestore", "Error getting document: " + e));
-                        }
-                    }
-                } else {
-                    // Пользователь не авторизован
-                    DialogFragment authentication = new AuthenticationGoogle();
-                    authentication.show(getParentFragmentManager(), "AuthenticationGoogle");
+        if (user != null){
+            String uid = user.getUid();
+            DocumentReference userRef = FirebaseFirestore.getInstance().collection("users").document(uid);
+            userRef.get().addOnSuccessListener(documentSnapshot -> {
+                if (documentSnapshot.exists() && documentSnapshot.contains("nickname")){
+                    userRef.update("ScoreSurvival", progressSurvival);
+                    userRef.update("ScoreTime", progressTime);
                 }
+            });
+        }
+
+        mScoreTime.setOnClickListener(v -> {
+            if (user != null) {
+                List<? extends UserInfo> providerData = user.getProviderData();
+                for (UserInfo info : providerData) {
+                    if (info.getProviderId().equals("google.com")) {
+                        String uid = user.getUid();
+                        DocumentReference userRef = FirebaseFirestore.getInstance().collection("users").document(uid);
+                        userRef.get().addOnSuccessListener(documentSnapshot -> {
+                            if (documentSnapshot != null && documentSnapshot.exists() && documentSnapshot.contains("nickname")) {
+                                DialogFragment scoreUsers = new ScoreUsersTime();
+                                scoreUsers.show(getParentFragmentManager(), "ScoreUsers");
+                                Log.d("Firestore Nickname", "Such document");
+                            } else {
+                                DialogFragment nicknameUser = new DialogNickname();
+                                nicknameUser.show(getParentFragmentManager(), "nicknameUser");
+                                Log.d("Firestore Nickname", "No such document");
+                            }
+                        }).addOnFailureListener(e -> Log.e("Firestore", "Error getting document: " + e));
+                    }
+                }
+            } else {
+                // Пользователь не авторизован
+                DialogFragment authentication = new AuthenticationGoogle();
+                authentication.show(getParentFragmentManager(), "AuthenticationGoogle");
             }
         });
 
-        mScoreSurvival.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (user != null){
-                    List<? extends UserInfo> providerData = user.getProviderData();
-                    for (UserInfo info : providerData) {
-                        if (info.getProviderId().equals("google.com")) {
-                            // Пользователь авторизован
+        mScoreSurvival.setOnClickListener(v -> {
+            if (user != null){
+                List<? extends UserInfo> providerData = user.getProviderData();
+                for (UserInfo info : providerData) {
+                    if (info.getProviderId().equals("google.com")) {
+                        // Пользователь авторизован
 
-                            DialogFragment scoreUsers = new ScoreUsersSurvival();
-                            scoreUsers.show(getParentFragmentManager(), "ScoreUsers");
-                            break;
-                        }
+                        DialogFragment scoreUsers = new ScoreUsersSurvival();
+                        scoreUsers.show(getParentFragmentManager(), "ScoreUsers");
+                        break;
                     }
-                } else {
-                    // Пользователь не авторизован
-                    DialogFragment authentication = new AuthenticationGoogle();
-                    authentication.show(getParentFragmentManager(), "AuthenticationGoogle");
                 }
+            } else {
+                // Пользователь не авторизован
+                DialogFragment authentication = new AuthenticationGoogle();
+                authentication.show(getParentFragmentManager(), "AuthenticationGoogle");
             }
         });
 

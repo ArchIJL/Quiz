@@ -51,8 +51,16 @@ public class DialogNickname extends DialogFragment {
                 String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 DocumentReference userRef = db.collection("users").document(uid);
                 userRef.update("nickname", nickname).addOnSuccessListener(unused -> {
+                    userRef.get().addOnSuccessListener(documentSnapshot -> {
+                        if (documentSnapshot != null && documentSnapshot.exists() && !documentSnapshot.contains("ScoreTime")) {
+                            userRef.update("ScoreTime", 0);
+                        }
+                        if (documentSnapshot != null && documentSnapshot.exists() && !documentSnapshot.contains("ScoreSurvival")) {
+                            userRef.update("ScoreSurvival", 0);
+                        }
+                    });
                     DialogNickname.this.dismiss();
-                    Navigation.findNavController(requireActivity(), R.id.fragmentContainerView).navigate(R.id.settings, null);
+                    Navigation.findNavController(DialogNickname.this.requireActivity(), R.id.fragmentContainerView).navigate(R.id.settings, null);
                 })
                         .addOnFailureListener(e -> Log.w("Error Nickname", "Error updating document", e));
             } else {

@@ -1,8 +1,8 @@
-package com.example.quiz;
+package com.example.quiz.userrecord;
 
 public class UserRecord {
-    private String nickname;
-    private int score;
+    private final String nickname;
+    private final int score;
 
     public UserRecord(String nickname, int score) {
         this.nickname = nickname;

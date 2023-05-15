@@ -2,13 +2,16 @@ package com.example.quiz.notification;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.Manifest;
 import android.app.Application;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.lifecycle.ViewModelProvider;
@@ -49,9 +52,10 @@ public class CheckLoginReceiver extends BroadcastReceiver {
         Intent intent = new Intent(context, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+
         // Создание уведомления с помощью NotificationCompat.Builder
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
-                .setSmallIcon(R.drawable.quiz_main) // Поменять картинку на картинку приложения
+                .setSmallIcon(R.drawable.quiz_icon) // Поменять картинку на картинку приложения
                 .setContentTitle("Тебя не было целую неделю")
                 .setContentText("Скорее заходи обратно")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
@@ -59,7 +63,9 @@ public class CheckLoginReceiver extends BroadcastReceiver {
                 .setAutoCancel(true);
 
         // Показать уведомление с помощью NotificationManagerCompat
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        notificationManager.notify(NOTIFICATION_ID, builder.build());
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+            notificationManager.notify(NOTIFICATION_ID, builder.build());
+        }
     }
 }

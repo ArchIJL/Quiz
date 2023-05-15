@@ -6,10 +6,35 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="light_black">#757575</color>
     <color name="white">#E6FFFFFF</color>
-    <color name="blue">#007AFF</color>
-    <color name="green">#18BC1F</color>
+    <color name="blue">#00ABF0</color>
+    <color name="green">#45F084</color>
+    <color name="dark_green1">#139743</color>
     <color name="red">#C51212</color>
+    <color name="dark_red">#D1003E</color>
     <color name="gray">#454141</color>
+    <color name="dark_green2">#00796B</color>
+    <color name="violet">#8C78F0</color>
+    <color name="yellow">#AFB42B</color>
+    <color name="orange">#F57C00</color>
 
+    <color name="theme">#E6FFFFFF</color>
+    <color name="toolbar">#DFEFFF</color>
+
+    <color name="oval1">#F44848</color>
+    <color name="oval2">#5F9BF6</color>
+    <color name="oval3">#EDFA5C</color>
+    <color name="oval4">#E16EF4</color>
+    <color name="oval5">#84EA02</color>
+
+    <color name="rect1">#DBEC70</color>
+    <color name="rect2">#81E870</color>
+    <color name="rect3">#6DD4EA</color>
+    <color name="rect4">#EC669E</color>
+    <color name="rect5">#649BED</color>
+    <color name="rect6">#AB67EE</color>
+    <color name="rect7">#ED6F67</color>
+    <color name="rect8">#EDB767</color>
+    <color name="rect9">#F258E3</color>
 </resources>

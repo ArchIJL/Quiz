@@ -9,6 +9,7 @@
     <string name="vibration">Вибрация</string>
     <string name="notification">Уведомления</string>
     <string name="progress">Прогресс</string>
+    <string name="reset">Сбросить</string>
 
     <string name="web_client_id">849738737756-ua3bctadteulmnujn9caac3hdcu9gon7.apps.googleusercontent.com</string>
 
@@ -42,8 +43,13 @@
 
     <color name="correct">#4CAF50</color>
     <color name="incorrect">#F44336</color>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="enter_nickname">Введите свой никнейм:</string>
     <string name="accept">Принять</string>
+
+    //Content description
+    <string name="past_level">Past level</string>
+    <string name="next_level">Next level</string>
+    <string name="answer_button">Answer button</string>
+    <string name="info_button">Info button</string>
 </resources>

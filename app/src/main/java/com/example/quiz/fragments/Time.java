@@ -1,4 +1,4 @@
-package com.example.quiz;
+package com.example.quiz.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -20,6 +20,8 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.quiz.questions.Question;
+import com.example.quiz.R;
 import com.example.quiz.databinding.FragmentTimeBinding;
 import com.example.quiz.dialogfragments.ResultsDialogTimeFragment;
 import com.example.quiz.model.QuestionsTaSViewModel;
@@ -30,7 +32,7 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class time extends Fragment {
+public class Time extends Fragment {
 
     private FragmentTimeBinding binding = null;
 
@@ -41,7 +43,7 @@ public class time extends Fragment {
     private Button mOption4Button;
     private TextView mTimerTextView;
 
-    private List<MainActivity.Question> mQuestions;
+    private List<Question> mQuestions;
     private int mCurrentQuestionIndex;
     private int mNumCorrectAnswers;
     private int mNumAnswers;
@@ -62,6 +64,7 @@ public class time extends Fragment {
 
         // Создание списка вопросов
         mQuestions = new ArrayList<>();
+        questionsTaSViewModel.loadQuestionsFromPrefs(getContext());
         mQuestions = questionsTaSViewModel.getQuestions();
 
         Log.d("firebaseTime", String.valueOf(mQuestions));
@@ -127,7 +130,7 @@ public class time extends Fragment {
         return binding.getRoot();
     }
 
-    private void setQuestion(MainActivity.Question question) {
+    private void setQuestion(Question question) {
         mQuestionTextView.setText(question.getText());
         Collections.shuffle(question.getOptions());
         mOption1Button.setText(question.getOptions().get(0));
@@ -137,7 +140,7 @@ public class time extends Fragment {
     }
 
     private void checkAnswer(Button selectedButton) {
-        MainActivity.Question currentQuestion = mQuestions.get(mCurrentQuestionIndex);
+        Question currentQuestion = mQuestions.get(mCurrentQuestionIndex);
         mNumAnswers++;
         if (selectedButton.getText().toString().equals(currentQuestion.getCorrectOption())) {
             // Если ответ правильный, установить цвет фона кнопки на зелёный

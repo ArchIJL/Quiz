@@ -3,17 +3,9 @@ package com.example.quiz.model;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.VibrationEffect;
-import android.preference.PreferenceManager;
-import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SettingsViewModel extends ViewModel {
 
@@ -61,17 +53,6 @@ public class SettingsViewModel extends ViewModel {
         if (score > highestScoreTime.getValue()){
             highestScoreTime.setValue(score);
         }
-
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseUser user = auth.getCurrentUser();
-
-        if (user != null) {
-            String uid = user.getUid();
-            DocumentReference userRef = db.collection("users").document(uid);
-            userRef.update("ScoreTime", score);
-        }
-
     }
 
     public MutableLiveData<Integer> getHighestScoreSurvival() {
@@ -79,48 +60,13 @@ public class SettingsViewModel extends ViewModel {
     }
 
     public void setHighestScoreSurvival(int score) {
-        /*if (score > highestScoreSurvival.getValue()){
+        if (score > highestScoreSurvival.getValue()){
             highestScoreSurvival.setValue(score);
-        }*/
-
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseUser user = auth.getCurrentUser();
-
-        if (user != null) {
-            String uid = user.getUid();
-            DocumentReference userRef = db.collection("users").document(uid);
-            userRef.get().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot documentSnapshot = task.getResult();
-                    if (documentSnapshot.exists() && documentSnapshot.contains("ScoreSurvival")) {
-                        int currentScore = documentSnapshot.getLong("ScoreSurvival").intValue();
-                        if (score > currentScore) {
-                            userRef.update("ScoreSurvival", score);
-                        }
-                    } else {
-                        userRef.update("ScoreSurvival", score);
-                    }
-                } else {
-                    Log.d("Score Survival", "Error getting user document", task.getException());
-                }
-            });
-        } else {
-            if (score > highestScoreSurvival.getValue()){
-                highestScoreSurvival.setValue(score);
-            }
         }
-
-
-        /*if (user != null) {
-            String uid = user.getUid();
-            DocumentReference userRef = db.collection("users").document(uid);
-            userRef.update("ScoreSurvival", score);
-        }*/
     }
 
     public void loadSettings(Context context) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences sharedPreferences = context.getSharedPreferences("SettingsViewModel", Context.MODE_PRIVATE);
         isSoundEnabled = sharedPreferences.getBoolean("sound_enabled", true);
         isVibrationEnabled = sharedPreferences.getBoolean("vibration_enabled", true);
         isNotificationEnabled = sharedPreferences.getBoolean("notification_enabled", true);
@@ -129,7 +75,7 @@ public class SettingsViewModel extends ViewModel {
     }
 
     public void saveSettings(Context context) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences sharedPreferences = context.getSharedPreferences("SettingsViewModel", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("sound_enabled", isSoundEnabled);
         editor.putBoolean("vibration_enabled", isVibrationEnabled);

@@ -58,28 +58,22 @@ public class ResultsDialogSurvivalFragment extends DialogFragment {
         mNumCorrectAnswersTextView.setText(getString(R.string.num_correct_answers_survival, numCorrectAnswers));
         mScoreText.setText(getString(R.string.num_score, score));
 
-        mStartAgainButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-                NavController navController = Navigation.findNavController(requireActivity(), R.id.fragmentContainerView);
-                navController.popBackStack();
-                NavOptions navOptions = new NavOptions.Builder()
-                        .setEnterAnim(R.anim.slide_in_left)
-                        .setExitAnim(R.anim.slide_out_right)
-                        .setPopEnterAnim(R.anim.slide_in_left)
-                        .setPopExitAnim(R.anim.slide_out_right)
-                        .build();
-                Navigation.findNavController(requireActivity(), R.id.fragmentContainerView).navigate(R.id.survival, null, navOptions);
-            }
+        mStartAgainButton.setOnClickListener(v -> {
+            dismiss();
+            NavController navController = Navigation.findNavController(requireActivity(), R.id.fragmentContainerView);
+            navController.popBackStack();
+            NavOptions navOptions = new NavOptions.Builder()
+                    .setEnterAnim(R.anim.slide_in_left)
+                    .setExitAnim(R.anim.slide_out_right)
+                    .setPopEnterAnim(R.anim.slide_in_left)
+                    .setPopExitAnim(R.anim.slide_out_right)
+                    .build();
+            Navigation.findNavController(requireActivity(), R.id.fragmentContainerView).navigate(R.id.survival, null, navOptions);
         });
 
-        mMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                requireActivity().onBackPressed();
-                dismiss();
-            }
+        mMenu.setOnClickListener(v -> {
+            requireActivity().onBackPressed();
+            dismiss();
         });
 
         return binding.getRoot();

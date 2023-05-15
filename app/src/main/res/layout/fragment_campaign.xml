@@ -1,363 +1,476 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".campaign">
+    android:orientation="vertical"
+    tools:context=".fragments.Campaign">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/oval1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="-50dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/oval"
+            android:backgroundTint="@color/oval5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/rect1"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="-50dp"
+            android:background="@drawable/rect"
+            android:backgroundTint="@color/rect4"
+            android:rotation="45"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/oval2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="-100dp"
+            android:layout_marginTop="-150dp"
+            android:background="@drawable/oval"
+            android:backgroundTint="@color/oval2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/rect2"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginBottom="200dp"
+            android:background="@drawable/rect"
+            android:backgroundTint="@color/rect7"
+            android:rotation="-70"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <View
+            android:id="@+id/rect3"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/rect"
+            android:backgroundTint="@color/rect9"
+            android:rotation="30"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/oval3"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="-20dp"
+            android:layout_marginBottom="70dp"
+            android:background="@drawable/oval"
+            android:backgroundTint="@color/oval1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <View
+            android:id="@+id/oval4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/oval"
+            android:backgroundTint="@color/oval3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <View
+            android:id="@+id/rect4"
+            android:layout_width="50dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="-40dp"
+            android:layout_marginBottom="250dp"
+            android:background="@drawable/rect"
+            android:backgroundTint="@color/rect8"
+            android:rotation="45"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/toolbar"
+        android:elevation="10dp"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        android:elevation="10dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <LinearLayout
         android:id="@+id/container_campaign_1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/toolbar1"
-        android:orientation="vertical">
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar1">
 
 
-        <LinearLayout
-            android:id="@+id/container_campaign_2"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:scrollbars="none">
 
-
-            <ScrollView
+            <LinearLayout
+                android:id="@+id/container_campaign_4"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:scrollbars="none">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/container_campaign_4"
+                    android:id="@+id/geography"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
+                    android:layout_height="match_parent"
+                    android:background="@drawable/custom_button_category"
+                    android:backgroundTint="@color/dark_red"
+                    android:clickable="true"
+                    android:orientation="vertical">
 
-                    <LinearLayout
-                        android:id="@+id/geography"
+                    <TextView
+                        android:id="@+id/textView1"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:clickable="true"
-                        android:background="@drawable/answer_button_background"
-                        android:orientation="vertical">
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:text="География"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="30sp" />
 
-                        <TextView
-                            android:id="@+id/textView1"
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <ProgressBar
+                            android:id="@+id/progressBarGeography"
+                            style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="География"
-                            android:gravity="center"
-                            android:textAllCaps="false"
-                            android:textColor="@color/black"
-                            android:textSize="30sp"/>
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <ProgressBar
-                                android:id="@+id/progressBarGeography"
-                                style="?android:attr/progressBarStyleHorizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="5dp"
-                                android:progressDrawable="@drawable/custom_progress_bar"
-                                 />
-
-                            <TextView
-                                android:id="@+id/counter1"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="5dp"
-                                android:gravity="center"
-                                android:textSize="10sp"
-                                android:textColor="@color/black" />
-                        </RelativeLayout>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/logo"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:clickable="true"
-                        android:background="@drawable/answer_button_background"
-                        android:orientation="vertical">
+                            android:padding="5dp"
+                            android:progressDrawable="@drawable/custom_progress_bar" />
 
                         <TextView
-                            android:id="@+id/textView2"
+                            android:id="@+id/counter1"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Логотипы"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="5dp"
                             android:gravity="center"
-                            android:textAllCaps="false"
                             android:textColor="@color/black"
-                            android:textSize="30sp"/>
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <ProgressBar
-                                android:id="@+id/progressBarLogo"
-                                style="?android:attr/progressBarStyleHorizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="5dp"
-                                android:progressDrawable="@drawable/custom_progress_bar"
-                                />
-
-                            <TextView
-                                android:id="@+id/counter2"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="5dp"
-                                android:gravity="center"
-                                android:textSize="10sp"
-                                android:textColor="@color/black" />
-                        </RelativeLayout>
+                            android:textSize="10sp" />
+                    </RelativeLayout>
 
 
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/history"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:clickable="true"
-                        android:background="@drawable/answer_button_background"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textView3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="История"
-                            android:gravity="center"
-                            android:textAllCaps="false"
-                            android:textColor="@color/black"
-                            android:textSize="30sp"/>
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <ProgressBar
-                                android:id="@+id/progressBarHistory"
-                                style="?android:attr/progressBarStyleHorizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="5dp"
-                                android:progressDrawable="@drawable/custom_progress_bar"
-                                />
-
-                            <TextView
-                                android:id="@+id/counter3"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="5dp"
-                                android:gravity="center"
-                                android:textSize="10sp"
-                                android:textColor="@color/black" />
-                        </RelativeLayout>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/sports"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:clickable="true"
-                        android:background="@drawable/answer_button_background"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textView4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Спорт"
-                            android:gravity="center"
-                            android:textAllCaps="false"
-                            android:textColor="@color/black"
-                            android:textSize="30sp"/>
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <ProgressBar
-                                android:id="@+id/progressBarSports"
-                                style="?android:attr/progressBarStyleHorizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="5dp"
-                                android:progressDrawable="@drawable/custom_progress_bar"
-                                />
-
-                            <TextView
-                                android:id="@+id/counter4"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="5dp"
-                                android:gravity="center"
-                                android:textSize="10sp"
-                                android:textColor="@color/black" />
-                        </RelativeLayout>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/movies"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:clickable="true"
-                        android:background="@drawable/answer_button_background"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textView5"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Кино"
-                            android:gravity="center"
-                            android:textAllCaps="false"
-                            android:textColor="@color/black"
-                            android:textSize="30sp"/>
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <ProgressBar
-                                android:id="@+id/progressBarMovies"
-                                style="?android:attr/progressBarStyleHorizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="5dp"
-                                android:progressDrawable="@drawable/custom_progress_bar"
-                                />
-
-                            <TextView
-                                android:id="@+id/counter5"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="5dp"
-                                android:gravity="center"
-                                android:textSize="10sp"
-                                android:textColor="@color/black" />
-                        </RelativeLayout>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/games"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:clickable="true"
-                        android:background="@drawable/answer_button_background"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textView6"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Игры"
-                            android:gravity="center"
-                            android:textAllCaps="false"
-                            android:textColor="@color/black"
-                            android:textSize="30sp"/>
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <ProgressBar
-                                android:id="@+id/progressBarGames"
-                                style="?android:attr/progressBarStyleHorizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="5dp"
-                                android:progressDrawable="@drawable/custom_progress_bar"
-                                />
-
-                            <TextView
-                                android:id="@+id/counter6"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="5dp"
-                                android:gravity="center"
-                                android:textSize="10sp"
-                                android:textColor="@color/black" />
-                        </RelativeLayout>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/food"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:clickable="true"
-                        android:background="@drawable/answer_button_background"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textView7"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Кулинария"
-                            android:gravity="center"
-                            android:textAllCaps="false"
-                            android:textColor="@color/black"
-                            android:textSize="30sp"/>
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <ProgressBar
-                                android:id="@+id/progressBarFood"
-                                style="?android:attr/progressBarStyleHorizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="5dp"
-                                android:progressDrawable="@drawable/custom_progress_bar"
-                                />
-
-                            <TextView
-                                android:id="@+id/counter7"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="5dp"
-                                android:gravity="center"
-                                android:textSize="10sp"
-                                android:textColor="@color/black" />
-                        </RelativeLayout>
-                    </LinearLayout>
                 </LinearLayout>
-            </ScrollView>
-        </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/science"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/custom_button_category"
+                    android:backgroundTint="@color/blue"
+                    android:clickable="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:text="Наука"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="30sp" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <ProgressBar
+                            android:id="@+id/progressBarScience"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:progressDrawable="@drawable/custom_progress_bar" />
+
+                        <TextView
+                            android:id="@+id/counter2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textSize="10sp" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/history"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/custom_button_category"
+                    android:backgroundTint="@color/violet"
+                    android:clickable="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:text="История"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="30sp" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <ProgressBar
+                            android:id="@+id/progressBarHistory"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:progressDrawable="@drawable/custom_progress_bar" />
+
+                        <TextView
+                            android:id="@+id/counter3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textSize="10sp" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/sports"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/custom_button_category"
+                    android:backgroundTint="@color/dark_green2"
+                    android:clickable="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:text="Спорт"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="30sp" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <ProgressBar
+                            android:id="@+id/progressBarSports"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:progressDrawable="@drawable/custom_progress_bar" />
+
+                        <TextView
+                            android:id="@+id/counter4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textSize="10sp" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/movies"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/custom_button_category"
+                    android:backgroundTint="@color/yellow"
+                    android:clickable="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:text="Кино"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="30sp" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <ProgressBar
+                            android:id="@+id/progressBarMovies"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:progressDrawable="@drawable/custom_progress_bar" />
+
+                        <TextView
+                            android:id="@+id/counter5"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textSize="10sp" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/games"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/custom_button_category"
+                    android:backgroundTint="@color/light_black"
+                    android:clickable="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:text="Игры"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="30sp" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <ProgressBar
+                            android:id="@+id/progressBarGames"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:progressDrawable="@drawable/custom_progress_bar" />
+
+                        <TextView
+                            android:id="@+id/counter6"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textSize="10sp" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/food"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/custom_button_category"
+                    android:backgroundTint="@color/orange"
+                    android:clickable="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:text="Кулинария"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="30sp" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <ProgressBar
+                            android:id="@+id/progressBarFood"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:progressDrawable="@drawable/custom_progress_bar" />
+
+                        <TextView
+                            android:id="@+id/counter7"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textSize="10sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

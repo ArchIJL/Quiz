@@ -2,9 +2,14 @@ package com.example.quiz.model;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.util.Pair;
 
 import androidx.lifecycle.ViewModel;
+
+import com.example.quiz.questions.QuestionCampaign;
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,12 +19,12 @@ public class MyViewModel extends ViewModel {
 
     private int categoryId;
     private int levelId;
+    private String versionDatabase;
     private Map<Integer, String> correctAnswers = new HashMap<>(140);
     private HashMap<Pair<Integer, Integer>, ArrayList<Pair<String, Boolean>>> buttonData = new HashMap<>();
     private Map<Pair<Integer, Integer>, Boolean> resetButtonStates = new HashMap<>();
     private Map<Integer, Map<Integer, Boolean>> completionStatus = new HashMap<>();
-
-
+    private Map<String, Map<String, QuestionCampaign>> questionMap = new HashMap<>();
 
 
     public void setCategoryId(int categoryId){
@@ -36,6 +41,14 @@ public class MyViewModel extends ViewModel {
 
     public int getLevelId(){
         return levelId;
+    }
+
+    public String getVersionDatabase() {
+        return versionDatabase;
+    }
+
+    public void setVersionDatabase(String versionDatabase) {
+        this.versionDatabase = versionDatabase;
     }
 
     public void setCorrectAnswer(int questionNumber, String correctAnswer){
@@ -65,9 +78,38 @@ public class MyViewModel extends ViewModel {
         return categoryCompletionStatus.get(levelId);
     }
 
+    public void setQuestionMap(Map<String, Map<String, QuestionCampaign>> questionMap) {
+        this.questionMap = questionMap;
+        Log.v("ViewModelHashMap", String.valueOf(this.questionMap));
+    }
+
+    public Map<String, Map<String, QuestionCampaign>> getQuestionMap() {
+        return questionMap;
+    }
+
+    public void saveQuestionMap(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences("MyQuestion", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(questionMap);
+        editor.putString("QuestionMap", json);
+        editor.apply();
+    }
+
+    public void loadQuestionMap(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences("MyQuestion", Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = prefs.getString("QuestionMap", "");
+        if (!json.isEmpty()) {
+            questionMap = gson.fromJson(json, new TypeToken<Map<String, Map<String, QuestionCampaign>>>(){}.getType());
+        }
+    }
+
     public void saveData(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("MyViewModel", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString("dbVersion", versionDatabase);
         editor.putInt("levelId", levelId);
         editor.putInt("categoryId", categoryId);
         editor.putInt("numQuestions", correctAnswers.size());
@@ -97,6 +139,8 @@ public class MyViewModel extends ViewModel {
 
     public void loadData(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("MyViewModel", Context.MODE_PRIVATE);
+
+        versionDatabase = sharedPreferences.getString("dbVersion", "0");
         levelId = sharedPreferences.getInt("levelId", 0);
         categoryId = sharedPreferences.getInt("categoryId", 0);
         int numQuestions = sharedPreferences.getInt("numQuestions", 0);

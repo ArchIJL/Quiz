@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.PERMISSION_GRANTED" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -19,8 +20,10 @@
         android:theme="@style/Theme.Quiz"
         tools:targetApi="31">
 
+
+
         <service
-            android:name=".SoundService"
+            android:name=".sound.SoundService"
             android:enabled="true"
             android:exported="false" />
 

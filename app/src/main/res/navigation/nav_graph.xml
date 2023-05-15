@@ -6,7 +6,7 @@
     app:startDestination="@id/splashFragment">
     <fragment
         android:id="@+id/main_fragment"
-        android:name="com.example.quiz.main_fragment"
+        android:name="com.example.quiz.fragments.Main_fragment"
         android:label="fragment_main_fragment"
         tools:layout="@layout/fragment_main_fragment">
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/campaign"
-        android:name="com.example.quiz.campaign"
+        android:name="com.example.quiz.fragments.Campaign"
         android:label="fragment_campaign"
         tools:layout="@layout/fragment_campaign" >
         <action
@@ -53,22 +53,22 @@
     </fragment>
     <fragment
         android:id="@+id/survival"
-        android:name="com.example.quiz.survival"
+        android:name="com.example.quiz.fragments.Survival"
         android:label="fragment_survival"
         tools:layout="@layout/fragment_survival" />
     <fragment
         android:id="@+id/time"
-        android:name="com.example.quiz.time"
+        android:name="com.example.quiz.fragments.Time"
         android:label="fragment_time"
         tools:layout="@layout/fragment_time" />
     <fragment
         android:id="@+id/settings"
-        android:name="com.example.quiz.settings"
+        android:name="com.example.quiz.fragments.Settings"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/set_level"
-        android:name="com.example.quiz.set_level"
+        android:name="com.example.quiz.fragments.Set_level"
         android:label="fragment_set_level"
         tools:layout="@layout/fragment_set_level">
         <action
@@ -81,12 +81,12 @@
     </fragment>
     <fragment
         android:id="@+id/level"
-        android:name="com.example.quiz.level"
+        android:name="com.example.quiz.fragments.Level"
         android:label="fragment_levels"
         tools:layout="@layout/fragment_levels" />
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.quiz.SplashFragment"
+        android:name="com.example.quiz.fragments.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
