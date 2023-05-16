@@ -29,6 +29,8 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+
 public class AuthenticationGoogle extends DialogFragment {
     private FragmentAuthenticationGoogleBinding binding = null;
     private GoogleSignInClient googleSignInClient;
@@ -93,7 +95,15 @@ public class AuthenticationGoogle extends DialogFragment {
                         // Store the uid in Firebase Realtime Database
                         FirebaseFirestore db = FirebaseFirestore.getInstance();
                         DocumentReference userRef = db.collection("users").document(uid);
-                        userRef.update("uid", uid);
+                        userRef.set(new HashMap<String, Object>() {{
+                                    put("uid", uid);
+                                }})
+                                .addOnSuccessListener(aVoid -> {
+                                    // Document creation success
+                                })
+                                .addOnFailureListener(e -> {
+                                    // Document creation failed
+                                });
                         dismiss();
 
                         DialogFragment nicknameUser = new DialogNickname();
