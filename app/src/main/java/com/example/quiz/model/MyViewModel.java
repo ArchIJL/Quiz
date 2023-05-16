@@ -17,14 +17,14 @@ import java.util.Map;
 
 public class MyViewModel extends ViewModel {
 
-    private int categoryId;
-    private int levelId;
-    private String versionDatabase;
-    private Map<Integer, String> correctAnswers = new HashMap<>(140);
-    private HashMap<Pair<Integer, Integer>, ArrayList<Pair<String, Boolean>>> buttonData = new HashMap<>();
-    private Map<Pair<Integer, Integer>, Boolean> resetButtonStates = new HashMap<>();
-    private Map<Integer, Map<Integer, Boolean>> completionStatus = new HashMap<>();
-    private Map<String, Map<String, QuestionCampaign>> questionMap = new HashMap<>();
+    public int categoryId;
+    public int levelId;
+    public String versionDatabase;
+    public Map<Integer, String> correctAnswers = new HashMap<>(140);
+    public HashMap<Pair<Integer, Integer>, ArrayList<Pair<String, Boolean>>> buttonData = new HashMap<>();
+    public Map<Pair<Integer, Integer>, Boolean> resetButtonStates = new HashMap<>();
+    public Map<Integer, Map<Integer, Boolean>> completionStatus = new HashMap<>();
+    public Map<String, Map<String, QuestionCampaign>> questionMap = new HashMap<>();
 
 
     public void setCategoryId(int categoryId){

@@ -37,8 +37,8 @@ public class SplashFragment extends Fragment {
     private Map<String, Map<String, QuestionCampaign>> questionMap = new HashMap<>();
     boolean questionsLoaded = false;
     boolean questionMapLoaded = false;
-    private QuestionsTaSViewModel questionsTaSViewModel;
-    private MyViewModel viewModel;
+    public QuestionsTaSViewModel questionsTaSViewModel;
+    public MyViewModel viewModel;
     private FragmentSplashBinding binding = null;
 
     @Override

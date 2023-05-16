@@ -34,11 +34,11 @@
     <string name="_food_19">19</string>
     <string name="_food_20">20</string>
 
-    <string name="num_correct_answers_time">Вы ответили правильно на %d из %d вопросов.</string>
-    <string name="num_correct_answers_survival">Вы ответили правильно на %d вопросов.</string>
+    <string name="num_correct_answers_time">Правильных ответов: %d.</string>
+    <string name="num_correct_answers_survival">Правильных ответов: %d.</string>
 
-    <string name="num_score">Рекорд %d</string>
-    <string name="num_score_settings">рекорд %d</string>
+    <string name="num_score">Рекорд: %d</string>
+    <string name="num_score_settings">рекорд: %d</string>
     <string name="num_campaign_settings">%d/140</string>
 
     <color name="correct">#4CAF50</color>

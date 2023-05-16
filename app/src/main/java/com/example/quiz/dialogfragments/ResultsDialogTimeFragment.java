@@ -56,9 +56,8 @@ public class ResultsDialogTimeFragment extends DialogFragment {
 
         Bundle args = getArguments();
         int numCorrectAnswers = args.getInt("numCorrectAnswers");
-        int numAnswers = args.getInt("numAnswers");
         int score = settingsViewModel.getHighestScoreTime().getValue();
-        mNumCorrectAnswersTextView.setText(getString(R.string.num_correct_answers_time, numCorrectAnswers, numAnswers));
+        mNumCorrectAnswersTextView.setText(getString(R.string.num_correct_answers_time, numCorrectAnswers));
         mScoreText.setText(getString(R.string.num_score, score));
 
         mStartAgainButton.setOnClickListener(v -> {

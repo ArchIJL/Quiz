@@ -14,7 +14,7 @@ import java.util.List;
 
 public class QuestionsTaSViewModel extends ViewModel {
 
-    private List<Question> mQuestions;
+    public List<Question> mQuestions;
 
 
     public List<Question> getQuestions() {

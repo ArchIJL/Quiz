@@ -111,4 +111,12 @@ public class MainActivity extends AppCompatActivity {
 
         stopService(new Intent(this, SoundService.class));
     }
+
+    public void setViewModel(MyViewModel viewModel) {
+        this.viewModel = viewModel;
+    }
+
+    public void setQuestionsTaSViewModel(QuestionsTaSViewModel questionsTaSViewModel) {
+        this.TaSViewModel = questionsTaSViewModel;
+    }
 }

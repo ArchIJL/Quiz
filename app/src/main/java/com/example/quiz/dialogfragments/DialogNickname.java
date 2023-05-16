@@ -1,6 +1,7 @@
 package com.example.quiz.dialogfragments;
 
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -43,6 +44,10 @@ public class DialogNickname extends DialogFragment {
 
         Button acceptButton = binding.acceptNickname;
         EditText nicknameEditText = binding.nickname;
+
+        InputFilter[] filters = new InputFilter[1];
+        filters[0] = new InputFilter.LengthFilter(6);
+        nicknameEditText.setFilters(filters);
 
         acceptButton.setOnClickListener(v -> {
             String nickname = nicknameEditText.getText().toString().trim();
