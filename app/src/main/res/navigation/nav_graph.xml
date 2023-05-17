@@ -68,7 +68,7 @@
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/set_level"
-        android:name="com.example.quiz.fragments.Set_level"
+        android:name="com.example.quiz.fragments.SetLevel"
         android:label="fragment_set_level"
         tools:layout="@layout/fragment_set_level">
         <action

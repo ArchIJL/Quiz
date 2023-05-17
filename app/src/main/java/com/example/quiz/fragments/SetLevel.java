@@ -20,7 +20,7 @@ import com.example.quiz.model.MyViewModel;
 import java.util.ArrayList;
 
 
-public class Set_level extends Fragment {
+public class SetLevel extends Fragment {
 
     private FragmentSetLevelBinding binding = null;
 
@@ -42,7 +42,7 @@ public class Set_level extends Fragment {
         Toolbar toolbar = binding.toolbar;
         ((AppCompatActivity) requireActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity) requireActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(view1 -> Set_level.this.requireActivity().onBackPressed());
+        toolbar.setNavigationOnClickListener(view1 -> SetLevel.this.requireActivity().onBackPressed());
         int categoryId = viewModel.getCategoryId();
         switch (categoryId){
             case 1:
